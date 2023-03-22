@@ -1,0 +1,12 @@
+package ru.faang.school.task_1.creature;
+
+class Pikeman extends Creature {
+    Pikeman(int quantity, int level) {
+        super("Pikeman", level, quantity, 4, 5, 4, 10);
+    }
+
+    @Override
+    public int getDamage() {
+        return getRandomDamage(1, 3);
+    }
+}
