@@ -23,32 +23,8 @@ public abstract class Creature {
         this.health = Math.max(1, health);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
     public int getHealth() {
         return health;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public void setQuantity(int quantity) {
