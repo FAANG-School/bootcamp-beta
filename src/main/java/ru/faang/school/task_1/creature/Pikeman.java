@@ -1,7 +1,7 @@
 package ru.faang.school.task_1.creature;
 
-class Pikeman extends Creature {
-    Pikeman(int quantity, int level) {
+public class Pikeman extends Creature {
+    public Pikeman(int quantity, int level) {
         super("Pikeman", level, quantity, 4, 5, 4, 10);
     }
 

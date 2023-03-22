@@ -1,30 +1,26 @@
 package ru.faang.school.task_1.creature;
 
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import ru.faang.school.task_1.utils.RandomUtils;
 
 public abstract class Creature {
-    private String name;
-    private int level;
-    private int attack;
-    private int defense;
-    private int speed;
-
-    private int health;
+    private final String name;
+    private final int level;
+    private final int attack;
+    private final int defense;
+    private final int speed;
+    private final int health;
     private int quantity;
 
     public abstract int getDamage();
 
     Creature(String name, int level, int quantity, int attack, int defense, int speed, int health) {
         this.name = name;
-        this.level = level;
-        this.quantity = quantity;
-        this.attack = attack;
-        this.defense = defense;
-        this.speed = speed;
-        this.health = health;
+        this.level = Math.max(1, level);
+        this.quantity = Math.max(1, quantity);
+        this.attack = Math.max(1, attack);
+        this.defense = Math.max(1, defense);
+        this.speed = Math.max(1, speed);
+        this.health = Math.max(1, health);
     }
 
     public String getName() {
@@ -61,14 +57,18 @@ public abstract class Creature {
 
     @Override
     public String toString() {
-        return String.format("%s [lvl %s] [q %s]", name, level, quantity);
+        return String.format("%s [%s units]", name, quantity);
     }
 
     protected int getRandomDamage(int from, int to) {
-        List<Integer> range = IntStream.rangeClosed(from, to)
-                .boxed().collect(Collectors.toList());
-        Random random = new Random();
-        int damageIndex = random.nextInt(range.size());
-        return range.get(damageIndex);
+        return RandomUtils.getRandomNumberFromRange(from, to);
+    }
+
+    public int getDamagePoints() {
+        return level * RandomUtils.getRandomNumberFromRange(1, 30) + (speed + attack + this.getDamage() + health) / 3;
+    }
+
+    public int getDefensePoints() {
+        return (defense + health) / 3;
     }
 }
