@@ -31,6 +31,7 @@ public class Test {
         h2.getArmy();*/
 
         BattleField battleField = new BattleField(h1,h2);
-        battleField.battle();
+        System.out.println();
+        System.out.println("The winner is " + battleField.battle());
     }
 }

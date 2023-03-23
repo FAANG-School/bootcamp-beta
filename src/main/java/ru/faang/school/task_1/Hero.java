@@ -13,7 +13,8 @@ public class Hero {
         setName(name);
         setFraction(fraction);
         setExperience(0);
-        setLevel(0);
+        setLevel(1);
+//        addCreature(new Pikeman(), 1);
     }
 
     public void addCreature(Creature creature, int quantity) {
@@ -43,17 +44,21 @@ public class Hero {
                 }
             }
             army.removeAll(toRemove);
+            army.trimToSize();
         } else {
             System.out.println("There is no " + creature.getClass().getSimpleName() + "s!");
         }
     }
 
     public ArrayList<Creature> getArmy() {
+        return army;
+    }
+
+    public void showArmy() {
         for (Creature c : army) {
             System.out.println(c);
             System.out.println();
         }
-        return army;
     }
 
     public String getName() {

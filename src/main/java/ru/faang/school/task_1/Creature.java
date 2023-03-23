@@ -7,22 +7,48 @@ public abstract class Creature {
     private int attack;
     private int defense;
     private int speed;
+    private int fullHealth;
     private int health;
     private int quantity;
 
-
-    protected int getDamage(int damage) {
-        System.out.println(getClass().getSimpleName() + " get " + damage + " damage");
-        return damage;//?????
+    protected int getDamage(Creature enemyCreature, Hero myHero) {
+        int damage = Math.max((enemyCreature.getAttack() * enemyCreature.getQuantity()) - (getDefense() * getQuantity()), 1);
+        int loosenQuantity = damage / getFullHealth();
+        int loosenHealth = damage % getFullHealth();
+        if (loosenQuantity>0) {
+            if (getQuantity() < loosenQuantity) {
+                myHero.removeCreature(this, loosenQuantity);
+                return damage;
+            } else {
+                myHero.removeCreature(this, loosenQuantity);
+                setHealth(getHealth() - loosenHealth);
+            }
+        } else {
+            setHealth(getHealth() - loosenHealth);
+        }
+        if (getHealth() <= 0) {
+            setHealth(getFullHealth() + getHealth());
+            myHero.removeCreature(this, 1);
+        }
+        return damage;
     }
 
-    public Creature(String name, int attack, int defense, int speed, int health) {
+    public Creature(String name, int attack, int defense, int speed, int health, int fullHealth) {
         setName(name);
         setAttack(attack);
         setDefense(defense);
         setSpeed(speed);
         setHealth(health);
         setQuantity(1);
+        setFullHealth(fullHealth);
+    }
+
+    public int getFullHealth() {
+        return fullHealth;
+    }
+
+    protected void setFullHealth(int fullHealth) {
+        this.fullHealth = fullHealth;
     }
 
     public int getQuantity() {
@@ -30,11 +56,7 @@ public abstract class Creature {
     }
 
     public void setQuantity(int quantity) {
-        if (getQuantity() < 0) {
-            this.quantity = 0;
-        } else {
-            this.quantity = quantity;
-        }
+        this.quantity = Math.max(quantity, 0);
     }
 
     public String getName() {
@@ -66,7 +88,6 @@ public abstract class Creature {
     }
 
     public void setSpeed(int speed) {
-        if (getQuantity() < 0) throw new RuntimeException("Speed must be positive!");
         this.speed = speed;
     }
 
@@ -75,6 +96,7 @@ public abstract class Creature {
     }
 
     public void setHealth(int health) {
+
         this.health = health;
     }
 
@@ -95,7 +117,7 @@ public abstract class Creature {
         return getClass().getSimpleName() + ": attack: " + attack
                 + "\ndefense: " + defense
                 + "\nspeed: " + speed
-                + "\nhealth: " + health
+                + "\nhealth: " + health + "/" + fullHealth
                 + "\nquantity: " + quantity;
 
     }

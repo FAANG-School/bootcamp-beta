@@ -11,13 +11,31 @@ public class BattleField {
 
     public Hero battle() {
         System.out.println(getHero1().getName() + " and " + getHero2().getName() + " are preparing to battle!");
-        if(Math.round(Math.random()*2)==1){
-            System.out.println(getHero1().getName() + " won!");
-            return getHero1();
-        } else {
-            System.out.println(getHero2().getName() + " won!");
-            return getHero2();
+
+        int hero1ArmySize = getHero1().getArmy().size();
+        int hero2ArmySize = getHero2().getArmy().size();
+        int turnDecider = 1;
+        while (hero1ArmySize != 0 && hero2ArmySize != 0) {
+
+            Creature currentCreatureToGetDamage;
+            Creature currentCreatureToCauseDamage;
+            if (turnDecider % 2 == 0) {
+                currentCreatureToGetDamage = getHero2().getArmy().get((int) (Math.floor(Math.random() * hero2ArmySize)));
+                currentCreatureToCauseDamage = getHero1().getArmy().get((int) (Math.floor(Math.random() * hero1ArmySize)));
+                int takenDamage = currentCreatureToGetDamage.getDamage(currentCreatureToCauseDamage, getHero2());
+                System.out.println(currentCreatureToGetDamage + " get " + takenDamage + " damage!");
+
+            } else {
+                currentCreatureToGetDamage = getHero1().getArmy().get((int) (Math.floor(Math.random() * hero1ArmySize)));
+                currentCreatureToCauseDamage = getHero2().getArmy().get((int) (Math.floor(Math.random() * hero2ArmySize)));
+                int takenDamage = currentCreatureToGetDamage.getDamage(currentCreatureToCauseDamage, getHero1());
+                System.out.println(currentCreatureToGetDamage + " get " + takenDamage + " damage!");
+            }
+            System.out.println("Turn number " + turnDecider++);
+            hero1ArmySize = getHero1().getArmy().size();
+            hero2ArmySize = getHero2().getArmy().size();
         }
+        return hero1ArmySize == 0 ? hero2 : hero1;
     }
 
     public Hero getHero1() {
