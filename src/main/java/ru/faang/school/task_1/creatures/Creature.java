@@ -11,4 +11,5 @@ public abstract class Creature {
     public int getDamage(){
         return level*attackPower;
     }
+
 }
