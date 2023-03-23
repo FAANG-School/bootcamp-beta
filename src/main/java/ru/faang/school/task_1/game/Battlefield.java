@@ -5,9 +5,9 @@ import ru.faang.school.task_1.game.heroes.Hero;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Battlefield {
-    private Hero firstHero;
+    private final Hero firstHero;
 
-    private Hero secondHero;
+    private final Hero secondHero;
 
     public Battlefield(Hero firstHero, Hero secondHero) {
         this.firstHero = firstHero;

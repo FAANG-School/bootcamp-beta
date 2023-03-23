@@ -72,18 +72,4 @@ public abstract class Creature {
     }
 
     public abstract Double getDefaultHealth();
-
-    @Override
-    public String toString() {
-        return "Creature{" +
-                "name='" + name + '\'' +
-                ", level=" + level +
-                ", attack=" + attack +
-                ", damage=" + damage +
-                ", defense=" + defense +
-                ", speed=" + speed +
-                ", health=" + health +
-                ", quantity=" + quantity +
-                '}';
-    }
 }

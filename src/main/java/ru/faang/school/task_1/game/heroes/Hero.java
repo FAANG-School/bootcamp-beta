@@ -7,15 +7,15 @@ import java.util.List;
 
 public class Hero {
 
-    private String name;
+    private final String name;
 
-    private String fraction;
+    private final String fraction;
 
     private Integer experience;
 
     private Integer level;
 
-    private List<Creature> units = new ArrayList<>();
+    private final List<Creature> units = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -65,17 +65,6 @@ public class Hero {
     }
     public List<Creature> getArmy() {
         return this.units;
-    }
-
-    @Override
-    public String toString() {
-        return "Hero{" +
-                "name='" + name + '\'' +
-                ", fraction='" + fraction + '\'' +
-                ", experience=" + experience +
-                ", level=" + level +
-                ", units=" + units +
-                '}';
     }
 }
 
