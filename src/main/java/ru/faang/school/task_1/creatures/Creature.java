@@ -5,7 +5,7 @@ public abstract class Creature {
     private final int level;
     private final int damage;
     private final int armor;
-    private int count;
+    private int quantity;
     private final int speed;
 
     public Creature(String name, int level, int damage,
@@ -15,11 +15,11 @@ public abstract class Creature {
         this.damage = damage;
         this.armor = armor;
         this.speed = speed;
-        this.count = count;
+        this.quantity = count;
     }
 
     public int takeDamage(int damage) {
-        return this.count = count - (damage / armor);
+        return this.quantity = quantity - (damage / armor);
     }
 
     public String getName() {
@@ -42,7 +42,7 @@ public abstract class Creature {
         return speed;
     }
 
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
 }
