@@ -6,17 +6,19 @@ import ru.faang.school.task_1.utils.RandomUtils;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
 
 public class Battlefield {
-    private Hero player1;
-    private Hero player2;
+    private final Hero player1;
+    private final Hero player2;
 
     public Battlefield(Hero player1, Hero player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
 
-    public Optional<Hero> battle() throws InterruptedException {
+    public Optional<Hero> battle() {
         System.out.println("=============== BATTLE STARTED ===============");
         Optional<Hero> maybeWinner = Optional.empty();
         Hero attackingHero;
@@ -53,12 +55,13 @@ public class Battlefield {
     }
 
     private Creature pickRandomCreature(Map<Creature, Integer> army) {
-        return RandomUtils.getRandomSetElement(army.keySet());
+        Set<Creature> creaturesSet = army.keySet();
+        return creaturesSet.stream().skip(new Random().nextInt(creaturesSet.size())).findFirst().orElse(null);
     }
 
     private int calculateCreatureQuantityAfterHit(Creature creature, int damage) {
-        double effectiveDamage = damage  - creature.getDefensePoints();
-        int killedCreatures = (int) Math.ceil(effectiveDamage / creature.getHealth());
+        double effectiveDamage = damage - creature.getDefensePoints();
+        int killedCreatures = (int) Math.ceil(effectiveDamage / creature.getDefense());
         return Math.max(0, killedCreatures);
     }
 

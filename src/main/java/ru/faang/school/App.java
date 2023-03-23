@@ -8,7 +8,7 @@ import ru.faang.school.task_1.creature.Swordsman;
 import ru.faang.school.task_1.hero.Hero;
 
 public class App {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Hero player1 = new Hero("Grindelwald", "Dark side", 0, 0);
 
         Hero player2 = new Hero("Anakin", "Light side", 0, 0);

@@ -4,7 +4,6 @@ import ru.faang.school.task_1.creature.Creature;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Hero {
     private final String name;
@@ -47,19 +46,11 @@ public class Hero {
         return army;
     }
 
-    public String getFraction() {
-        return fraction;
-    }
-
     public int getArmySize() {
         return army.values().stream().reduce(0, Integer::sum);
     }
 
     public String getName() {
-        return name;
-    }
-
-    public String getQuantity() {
         return name;
     }
 
