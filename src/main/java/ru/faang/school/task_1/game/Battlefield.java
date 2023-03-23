@@ -15,6 +15,7 @@ public class Battlefield {
     }
 
     public Hero battle() {
+        sortingArmiesBySpeedDesc(firstHero, secondHero);
         int lot = draw();
         Hero winner;
         if(lot == 1) {
