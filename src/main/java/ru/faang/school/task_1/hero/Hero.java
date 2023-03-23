@@ -5,6 +5,9 @@ import ru.faang.school.task_1.creature.Creature;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A class representing a hero in the game, with a name, a fraction, experience, level, and an army of creatures.
+ */
 public class Hero {
     private final String name;
     private final String fraction;
@@ -21,6 +24,12 @@ public class Hero {
         this.army = new HashMap<Creature, Integer>();
     }
 
+    /**
+     * Adds a new creature to the army of the hero, with the specified quantity.
+     *
+     * @param creature the creature to add
+     * @param quantity the quantity of the creature to add
+     */
     public void addCreature(Creature creature, int quantity) {
         if (army.containsKey(creature)) {
             army.put(creature, army.get(creature) + quantity);
@@ -29,6 +38,14 @@ public class Hero {
         }
     }
 
+    /**
+     * Removes a certain quantity of a creature from the army of the hero, updating its quantity and the map accordingly.
+     * If the quantity to remove is greater than or equal to the current quantity of the creature, it is removed
+     * from the army altogether.
+     *
+     * @param creature the creature to remove
+     * @param quantity the quantity of the creature to remove
+     */
     public void removeCreature(Creature creature, int quantity) {
         if (army.containsKey(creature)) {
             int currentQuantity = army.get(creature);
@@ -48,10 +65,6 @@ public class Hero {
 
     public int getArmySize() {
         return army.values().stream().reduce(0, Integer::sum);
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
