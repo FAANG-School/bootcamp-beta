@@ -24,7 +24,7 @@ public class Hero {
         if (army.containsKey(creature)) {
             int newQuantity = army.get(creature) + quantity;
             army.put(creature, newQuantity);
-        } else if (quantity > 0){
+        } else if (quantity > 0) {
             army.put(creature, quantity);
         }
     }

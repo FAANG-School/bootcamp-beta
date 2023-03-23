@@ -16,10 +16,7 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BattlefieldTest {
-
     List<Hero> heroes = new LinkedList<>();
-
-
 
     Creature pikeman = new Pikeman("pikeman", "1", 2, 1, 0, 15);
     Creature griffin = new Griffin("griffin", "2", 6, 3, 0, 30);
@@ -55,7 +52,6 @@ class BattlefieldTest {
         }
         assertTrue(heroes.get(0).getArmy().size() != 0);
     }
-
 
 
     private void generateArmy(Hero hero) {

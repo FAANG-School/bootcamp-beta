@@ -21,7 +21,6 @@ public abstract class Creature {
         this.healthPoints = health;
     }
 
-
     public Integer getDamage() {
         return attack;
     }
