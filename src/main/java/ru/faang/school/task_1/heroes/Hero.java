@@ -2,8 +2,7 @@ package ru.faang.school.task_1.heroes;
 
 import ru.faang.school.task_1.creatures.Creature;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.PriorityQueue;
 
 public class Hero {
 
@@ -11,7 +10,7 @@ public class Hero {
     private final Fraction fraction;
     private final int experience;
     private final int level;
-    private List<Creature> army;
+    private PriorityQueue<Creature> army;
 
     public Hero(Fraction fraction, String name) {
         this.name = name;
@@ -20,18 +19,18 @@ public class Hero {
         this.level = 1;
     }
 
-    public boolean addCreature(Creature creature) {
+    public void addCreature(Creature creature) {
         if (army == null) {
-            army = new LinkedList<>();
+            army = new PriorityQueue<>();
         }
-        return army.add(creature);
+        army.add(creature);
     }
 
-    public boolean removeCreature(Creature creature) {
+    public void removeCreature(Creature creature) {
         if (army == null) {
-            return false;
+            return;
         }
-        return army.remove(creature);
+        army.remove(creature);
     }
 
     public String getName() {
@@ -50,7 +49,7 @@ public class Hero {
         return level;
     }
 
-    public List<Creature> getArmy() {
+    public PriorityQueue<Creature> getArmy() {
         return army;
     }
 }
