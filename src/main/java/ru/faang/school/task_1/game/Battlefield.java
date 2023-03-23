@@ -2,6 +2,7 @@ package ru.faang.school.task_1.game;
 
 import ru.faang.school.task_1.game.creatures.*;
 import ru.faang.school.task_1.game.heroes.Hero;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Battlefield {

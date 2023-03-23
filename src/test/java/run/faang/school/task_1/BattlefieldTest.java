@@ -10,10 +10,6 @@ import ru.faang.school.task_1.game.creatures.Griffin;
 import ru.faang.school.task_1.game.creatures.Pikeman;
 import ru.faang.school.task_1.game.creatures.Swordman;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class BattlefieldTest {
 
     private Hero firstHero;
