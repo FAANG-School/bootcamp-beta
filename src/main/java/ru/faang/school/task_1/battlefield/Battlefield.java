@@ -59,7 +59,7 @@ public class Battlefield {
      *
      * @return a randomly chosen Hero
      */
-    public Hero pickRandomHero() {
+    private Hero pickRandomHero() {
         int randomNumber = RandomUtils.getRandomNumberFromRange(1, 2);
         return randomNumber == 1 ? player1 : player2;
     }
@@ -71,7 +71,7 @@ public class Battlefield {
      * @return the opposing Hero to the given Hero
      */
 
-    public Hero pickOpposingHero(Hero player) {
+    private Hero pickOpposingHero(Hero player) {
         return this.player1.hashCode() == player.hashCode() ? this.player2 : this.player1;
     }
 
@@ -81,7 +81,7 @@ public class Battlefield {
      * @param army the Hero's army from which to pick a Creature
      * @return a randomly chosen Creature from the Hero's army
      */
-    public Creature pickRandomCreature(Map<Creature, Integer> army) {
+    private Creature pickRandomCreature(Map<Creature, Integer> army) {
         Set<Creature> creaturesSet = army.keySet();
         return creaturesSet.stream().skip(new Random().nextInt(creaturesSet.size())).findFirst().orElse(null);
     }
@@ -106,7 +106,7 @@ public class Battlefield {
      * @param attacker the attacking Hero
      * @param defender the defending Hero
      */
-    public void performAttack(Hero attacker, Hero defender) {
+    private void performAttack(Hero attacker, Hero defender) {
         Creature attackingCreature = this.pickRandomCreature(attacker.getArmy());
         Creature defendingCreature = this.pickRandomCreature(defender.getArmy());
 
@@ -128,7 +128,7 @@ public class Battlefield {
      * @param hero2 the second hero to compare
      * @return an Optional of the winning hero or empty if the armies have the same size and there is draw
      */
-    public Optional<Hero> getWinner(Hero hero1, Hero hero2) {
+    private Optional<Hero> getWinner(Hero hero1, Hero hero2) {
         int hero1ArmySize = hero1.getArmySize();
         int hero2ArmySize = hero2.getArmySize();
 
@@ -147,7 +147,7 @@ public class Battlefield {
      * @param hero2 the second hero to check
      * @return true if the battle is over, false otherwise
      */
-    public boolean isBattleOver(Hero hero1, Hero hero2) {
+    private boolean isBattleOver(Hero hero1, Hero hero2) {
         return hero1.getArmySize() == 0 || hero2.getArmySize() == 0;
     }
 }
