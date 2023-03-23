@@ -38,6 +38,9 @@ public abstract class Creature {
         return level * RandomUtils.getRandomNumberFromRange(1, 30) + (speed + attack + this.getDamage()) / 3;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
     public int getDefense() {
         return defense;
     }
