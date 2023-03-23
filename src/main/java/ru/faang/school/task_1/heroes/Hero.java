@@ -9,11 +9,11 @@ public class Hero {
 
     private final String name;
     private final Fraction fraction;
-    private int experience;
-    private int level;
+    private final int experience;
+    private final int level;
     private List<Creature> army;
 
-    public Hero(String name, Fraction fraction) {
+    public Hero(Fraction fraction, String name) {
         this.name = name;
         this.fraction = fraction;
         this.experience = 0;
