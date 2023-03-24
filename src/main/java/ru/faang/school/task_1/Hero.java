@@ -2,32 +2,71 @@ package ru.faang.school.task_1;
 
 import ru.faang.school.task_1.creatures.Creature;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+
+import java.util.*;
 
 public class Hero {
     private String name;
     private Faction faction;
     private int experience;
     private int level;
-    final private List<Creature> creatureList = new LinkedList<>();
+    private final List<Creature> creatureList = new ArrayList<>();
+
+    public Hero(String name, Faction faction, int experience, int level) {
+        this.name = name;
+        this.faction = faction;
+        this.experience = experience;
+        this.level = level;
+    }
 
     public void addCreature (Creature creature, int quantity){
-        for (int i = 0; i < quantity; i++) {
+        boolean isHavingCreature = false;
+        for (Creature creatureOfHero : creatureList){
+            if (creatureOfHero.getName().equals(creature.getName())){
+                creatureOfHero.setQuantity(creatureOfHero.getQuantity()+creature.getQuantity());
+                isHavingCreature =true;
+            }
+        }
+        if(!isHavingCreature){
+            creature.setQuantity(quantity);
             creatureList.add(creature);
         }
     }
 
     public void removeCreature (Creature creature, int quantity){
-            for (int i = 0; i < quantity; i++) {
-                creatureList.remove(creature);
+        boolean isHavingCreature = false;
+        for (Creature creatureOfHero : creatureList){
+            if (creatureOfHero.getName().equals(creature.getName())){
+                if (creatureOfHero.getQuantity() > quantity){
+                    creatureOfHero.setQuantity(creatureOfHero.getQuantity()-creature.getQuantity());
+                }
+                else {
+                    creatureList.remove(creatureOfHero);
+                }
+                isHavingCreature =true;
             }
+        }
+        if(!isHavingCreature){
+            throw new IllegalArgumentException("Hero haven't this type of creature in his army");
+        }
     }
 
     public List<Creature> getArmy(){
         return creatureList;
     }
 
+    public boolean isArmyDefeat(){
+        int totalQuantity = 0;
+        for (Creature creature : creatureList){
+            totalQuantity += creature.getQuantity();
+        }
+        return totalQuantity == 0;
+    }
 
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
