@@ -12,19 +12,17 @@ public class Test {
 
         hero1.addCreature(new Angel(), 1);
         hero1.addCreature(new Griffin(), 1);
-        hero1.addCreature(new Pikeman(), 1);
-        hero1.addCreature(new Swordman(),1);
+        hero1.addCreature(new Pikeman(), 100);
+        hero1.addCreature(new Swordman(),100);
 
-        hero2.addCreature(new Angel(), 10);
-        hero2.addCreature(new Griffin(), 10);
-        hero2.addCreature(new Pikeman(), 10);
-        hero2.addCreature(new Swordman(),10);
+        hero2.addCreature(new Angel(), 100);
+        hero2.addCreature(new Griffin(), 100);
+        hero2.addCreature(new Pikeman(), 1000);
+        hero2.addCreature(new Swordman(),1000);
 
         Battlefield battlefield = new Battlefield(hero1, hero2);
         Hero winner = battlefield.battle();
-        System.out.println("WINNER IS:");
+        System.out.print("And the winner is: ");
         System.out.println(winner);
-
-
     }
 }

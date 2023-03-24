@@ -41,7 +41,7 @@ public class Hero {
                     creatureOfHero.setQuantity(creatureOfHero.getQuantity()-creature.getQuantity());
                 }
                 else {
-                    creatureList.remove(creatureOfHero);
+                    creatureOfHero.setQuantity(0);
                 }
                 isHavingCreature =true;
             }
@@ -49,24 +49,15 @@ public class Hero {
         if(!isHavingCreature){
             throw new IllegalArgumentException("Hero haven't this type of creature in his army");
         }
+
     }
 
     public List<Creature> getArmy(){
         return creatureList;
     }
 
-    public boolean isArmyDefeat(){
-        int totalQuantity = 0;
-        for (Creature creature : creatureList){
-            totalQuantity += creature.getQuantity();
-        }
-        return totalQuantity == 0;
-    }
-
     @Override
     public String toString() {
-        return "Hero{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Hero named " + name;
     }
 }
