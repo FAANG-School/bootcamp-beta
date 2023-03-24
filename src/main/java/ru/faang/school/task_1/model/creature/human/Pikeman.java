@@ -1,8 +1,8 @@
-package ru.faang.school.task_1.model.human;
+package ru.faang.school.task_1.model.creature.human;
 
 public class Pikeman extends HumanCreature {
 
-    private static final String name = "Pikeman";
+    private static final String name = "Копейщики";
 
     private static final Double attack = 25.0;
 

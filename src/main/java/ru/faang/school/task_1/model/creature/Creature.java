@@ -1,4 +1,4 @@
-package ru.faang.school.task_1.model;
+package ru.faang.school.task_1.model.creature;
 
 public abstract class Creature {
 
@@ -12,26 +12,26 @@ public abstract class Creature {
 
     private Double speed;
 
-    private Integer amount;
+    private Integer quantity;
 
     private Double health;
 
     private boolean isAlive = true;
 
-    protected Creature(String name, Integer level, Double attack, Double defense, Double speed, Integer amount, Double health) {
+    protected Creature(String name, Integer level, Double attack, Double defense, Double speed, Integer quantity, Double health) {
         this.name = name;
         this.level = level;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
-        this.amount = amount;
+        this.quantity = quantity;
         this.health = health;
     }
 
     public void updateInformation(Double enemyDamage) {
         double deadUnit = (enemyDamage - defense) / health;
-        this.amount = amount - (int) deadUnit;
-        if (amount <= 0) {
+        this.quantity = quantity - (int) deadUnit;
+        if (quantity <= 0) {
             isAlive = false;
         }
     }
@@ -58,11 +58,15 @@ public abstract class Creature {
         return speed;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Integer getQuantity() {
+        return quantity;
     }
 
     public Double getHealth() {
         return health;
+    }
+
+    public boolean isDead() {
+        return !isAlive;
     }
 }

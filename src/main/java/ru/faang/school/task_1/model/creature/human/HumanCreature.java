@@ -1,6 +1,6 @@
-package ru.faang.school.task_1.model.human;
+package ru.faang.school.task_1.model.creature.human;
 
-import ru.faang.school.task_1.model.Creature;
+import ru.faang.school.task_1.model.creature.Creature;
 
 import java.util.Random;
 
@@ -26,7 +26,7 @@ public abstract class HumanCreature extends Creature {
     @Override
     public Double getDamage() {
         double additionalDamage = random.nextDouble(humanCreatureDamageMultiplier);
-        return getAttack() * additionalDamage * getAmount();
+        return getAttack() * additionalDamage * getQuantity();
     }
 
 }
