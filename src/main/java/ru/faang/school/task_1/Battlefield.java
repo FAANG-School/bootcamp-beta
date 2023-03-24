@@ -10,7 +10,6 @@ public class Battlefield {
     private final Hero first = new Hero("hronosfera", "shadow", 0, 0);
 
     private final Hero second = new Hero("l1st3r", "demigod", 0, 0);
-
     public void init() {
         createArmy(first);
         createArmy(second);
@@ -37,15 +36,18 @@ public class Battlefield {
         Creature firstCreature = firstArmy.get(r.nextInt(firstArmy.size()));
         Creature anotherCreature = anotherArmy.get(r.nextInt(anotherArmy.size()));
 
+        int fix = quantityCounter(anotherCreature, firstCreature);
+
+        another.removeCreature(anotherCreature, fix);
+
+        battle(another, first);
+    }
+    private int quantityCounter(Creature anotherCreature, Creature firstCreature) {
         int oldAbsHealth = anotherCreature.getAbsHealth();
         anotherCreature.setAbsHealth(oldAbsHealth - Math.max(1, firstCreature.getDamage() - anotherCreature.getArmor() / 2));
         int absHealth = anotherCreature.getAbsHealth();
         int hp = anotherCreature.getHealth();
         int rec = oldAbsHealth - absHealth;
-        int fix = absHealth <= 0 ? anotherCreature.getQuantity() : rec <= 0 ? anotherCreature.getQuantity() : rec / hp;
-
-        another.removeCreature(anotherCreature, fix);
-
-        battle(another, first);
+        return absHealth <= 0 ? anotherCreature.getQuantity() : rec <= 0 ? anotherCreature.getQuantity() : rec / hp;
     }
 }
