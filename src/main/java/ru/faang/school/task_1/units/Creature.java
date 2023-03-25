@@ -13,4 +13,28 @@ public abstract class Creature {
         this.defence = defence;
         this.level = level;
     }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getCount() {
+        return count;
+    }
 }
