@@ -10,6 +10,8 @@ import ru.faang.school.task_1.game.creatures.Griffin;
 import ru.faang.school.task_1.game.creatures.Pikeman;
 import ru.faang.school.task_1.game.creatures.Swordman;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class BattlefieldTest {
 
     private Hero firstHero;
@@ -29,31 +31,35 @@ class BattlefieldTest {
         firstHero.addCreature(new Swordman(), 5);
 
         secondHero = new Hero("Second hero", "Red fraction");
-        secondHero.addCreature(new Angel(), 1);
+        secondHero.addCreature(new Angel(), 10);
         secondHero.addCreature(new Griffin(), 4);
         secondHero.addCreature(new Pikeman(), 3);
         secondHero.addCreature(new Swordman(), 5);
 
         thirdHero = new Hero("Third Hero", "Red Fraction");
-        thirdHero.addCreature(new Angel(), 3);
-
+        thirdHero.addCreature(new Angel(), 30);
 
         fourthHero = new Hero("Fourth Hero", "Blue Fraction");
         fourthHero.addCreature(new Griffin(), 110);
         fourthHero.addCreature(new Pikeman(), 150);
         fourthHero.addCreature(new Swordman(), 100);
     }
+
     @Test
     void firstBattle() {
         Battlefield battlefield = new Battlefield(firstHero, secondHero);
+
         Hero winner = battlefield.battle();
-        System.out.println("Winner is " + winner.getName());
+
+        assertEquals(secondHero.getName(), winner.getName());
     }
 
     @Test
     void secondBattle() {
         Battlefield battlefield = new Battlefield(thirdHero, fourthHero);
+
         Hero winner = battlefield.battle();
-        System.out.println("Winner is " + winner.getName());
+
+        assertEquals(thirdHero.getName(), winner.getName());
     }
 }

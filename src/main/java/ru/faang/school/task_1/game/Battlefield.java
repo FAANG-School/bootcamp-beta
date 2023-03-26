@@ -6,6 +6,16 @@ import ru.faang.school.task_1.game.heroes.Hero;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Battlefield {
+
+    private static final ThreadLocalRandom RANDOMIZER = ThreadLocalRandom.current();
+
+    private static final int FIRST_HERO_NUMBER = 1;
+
+    /*
+    Значение 3, а не 2, поскольку ThreadLocalRandom.current() возвращает число ниже верхней границы на 1
+     */
+    private static final int SECOND_HERO_NUMBER = 3;
+
     private final Hero firstHero;
 
     private final Hero secondHero;
@@ -16,14 +26,14 @@ public class Battlefield {
     }
 
     public Hero battle() {
-        sortingArmiesBySpeedDesc(firstHero, secondHero);
+        sortArmies();
         int lot = draw();
         Hero winner;
-        if(lot == 1) {
-            System.out.println(firstHero.getName() + " goes first.");
+        if (lot == 1) {
+            announcementWhoGoesFirst(firstHero.getName());
             winner = battle(firstHero, secondHero);
         } else {
-            System.out.println(secondHero.getName() + " goes first.");
+            announcementWhoGoesFirst(secondHero.getName());
             winner = battle(secondHero, firstHero);
         }
         return winner;
@@ -31,43 +41,42 @@ public class Battlefield {
 
     private Hero battle(Hero firstHero, Hero secondHero) {
         int strokeNumber = 1;
-        while (!firstHero.getArmy().isEmpty() || !secondHero.getArmy().isEmpty()) {
-            if(secondHero.getArmy().isEmpty() || firstHero.getArmy().isEmpty()) {
-                break;
-            }
-            if(strokeNumber % 2 != 0) {
+        while (!firstHero.isArmyEmpty() && !secondHero.isArmyEmpty()) {
+            if (strokeNumber % 2 != 0) {
                 makeAMove(firstHero, secondHero);
             } else {
                 makeAMove(secondHero, firstHero);
             }
             strokeNumber++;
         }
-        return firstHero.getArmy().isEmpty() ? secondHero : firstHero;
+        return firstHero.isArmyEmpty() ? secondHero : firstHero;
     }
 
     private int draw() {
-        return ThreadLocalRandom.current().nextInt(1, 2 + 1);
+        return RANDOMIZER.nextInt(FIRST_HERO_NUMBER, SECOND_HERO_NUMBER);
     }
-    private void sortingArmiesBySpeedDesc(Hero firstHero, Hero secondHero) {
-        firstHero.getArmy().sort(((o1, o2) -> o2.getSpeed().compareTo(o1.getSpeed())));
-        secondHero.getArmy().sort(((o1, o2) -> o2.getSpeed().compareTo(o1.getSpeed())));
+
+    private void sortArmies() {
+        sortArmy(firstHero);
+        sortArmy(secondHero);
+    }
+
+    private void sortArmy(Hero hero) {
+        hero.getArmy().sort(((o1, o2) -> o2.getSpeed().compareTo(o1.getSpeed())));
     }
 
     private void makeAMove(Hero hero, Hero enemyHero) {
         for (Creature unit : hero.getArmy()) {
-            if(enemyHero.getArmy().isEmpty()) {
+            if (enemyHero.isArmyEmpty()) {
                 return;
             }
-            int index = ThreadLocalRandom.current().nextInt(0, enemyHero.getArmy().size());
-            Creature enemyUnit = enemyHero.getArmy().get(index);
-            int unitsToRemove = enemyUnit.takeADamage(unit.getDamage(), unit.getAttack(), enemyUnit.getHealth(), enemyUnit.getDefense());
-            if(unitsToRemove > 0 || enemyHero.getArmy().get(index).getQuantity() == 0) {
-                enemyHero.removeCreature(enemyUnit, unitsToRemove);
-                hero.setExperience(hero.getExperience() + 10);
-                if(hero.getExperience() % 100 == 0) {
-                    hero.setLevel(hero.getLevel() + 1);
-                }
-            }
+            int indexOfUnitToAttack = RANDOMIZER.nextInt(0, enemyHero.getArmySize());
+            Creature enemyUnit = enemyHero.getArmy().get(indexOfUnitToAttack);
+            enemyUnit.takeADamage(hero, enemyHero, unit);
         }
+    }
+
+    private void announcementWhoGoesFirst(String heroName) {
+        System.out.println(heroName + " goes first.");
     }
 }

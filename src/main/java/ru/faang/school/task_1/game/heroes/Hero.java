@@ -11,31 +11,11 @@ public class Hero {
 
     private final String fraction;
 
-    private Integer experience;
+    private int experience;
 
-    private Integer level;
+    private int level;
 
     private final List<Creature> units = new ArrayList<>();
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getExperience() {
-        return experience;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setExperience(Integer experience) {
-        this.experience = experience;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
 
     public Hero(String name, String fraction) {
         this.name = name;
@@ -52,19 +32,40 @@ public class Hero {
     public void removeCreature(Creature creature, int quantity) {
         int index = 0;
         for (int i = 0; i < units.size(); i++) {
-            if(units.get(i).equals(creature)) {
+            if (units.get(i).equals(creature)) {
                 index = i;
                 break;
             }
         }
-        if(units.get(index).getQuantity() <= quantity) {
+        Creature c = units.get(index);
+        if (c.getQuantity() <= quantity) {
             units.remove(index);
         } else {
-            units.get(index).setQuantity(units.get(index).getQuantity() - quantity);
+            c.reducingQuantity(quantity);
         }
     }
+
+    public void increaseExperience(int amount) {
+        experience += amount;
+        if (experience % 100 == 0) {
+            level += 1;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public List<Creature> getArmy() {
-        return this.units;
+        return units;
+    }
+
+    public boolean isArmyEmpty() {
+        return units.isEmpty();
+    }
+
+    public int getArmySize() {
+        return units.size();
     }
 }
 
