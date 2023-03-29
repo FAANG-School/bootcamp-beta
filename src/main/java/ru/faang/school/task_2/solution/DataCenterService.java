@@ -33,7 +33,8 @@ public class DataCenterService implements OptimizationStrategy {
 
     /** Выделяет ресурсы для всех серверов исходя из запроса. */
     public void allocateResources(ResourceRequest request) {
-        dataCenter.getServers().forEach(server -> server.setLoad((server.getLoad() - request.getLoad()) < 0 ? 0
+        dataCenter.getServers().forEach(server -> server.setLoad((server.getLoad() - request.getLoad()) < 0 ? 0 
+                                                                 // Если server.load < request.load return 0
                 : server.getLoad() - request.getLoad()));
     }
 
