@@ -1,8 +1,10 @@
 package ru.faang.school.task_2;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DataCenter {
 
@@ -20,21 +22,42 @@ public class DataCenter {
         return servers.remove(server);
     }
 
-    public List<Double> getEnergyConsumptionValue() {
-        return servers.stream().map(Server::getEnergyConsumption).collect(Collectors.toList());
+    public Stream<Double> getEnergyConsumptionStream() {
+        return servers.stream().map(Server::getEnergyConsumption);
     }
 
-    public Server getAvailableServer(double load) {
+    public void releaseResources(double load) {
+        double reminderLoad = load;
         for (Server server : servers) {
-            if (server.getAvailableLoad() >= load) {
-                server.addLoad(load);
-                return server;
+            if (server.getLoad() >= reminderLoad) {
+                server.removeLoad(reminderLoad);
+                return;
+            } else {
+                reminderLoad -= server.getLoad();
+                server.removeLoad(server.getLoad());
             }
         }
-        return null;
     }
 
-    public void releaseResources(double load, Server server) {
-        servers.get(servers.indexOf(server)).removeLoad(load);
+    public boolean allocateResources(double load) {
+        double reminderLoad = load;
+        for (Server server : servers) {
+            if (server.getAvailableLoad() >= reminderLoad) {
+                server.addLoad(reminderLoad);
+                return true;
+            } else {
+                reminderLoad -= server.getAvailableLoad();
+                server.addLoad(server.getAvailableLoad());
+            }
+        }
+        return reminderLoad <= 0;
+    }
+
+    public List<Server> getServers() {
+        return servers;
+    }
+
+    public int getServersCount() {
+        return servers.size();
     }
 }
