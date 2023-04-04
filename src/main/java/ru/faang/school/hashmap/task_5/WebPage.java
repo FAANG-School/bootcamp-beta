@@ -8,11 +8,11 @@ public class WebPage {
         this.content = content;
     }
 
-    private String url;
+    private final String url;
 
-    private String title;
+    private final String title;
 
-    private String content;
+    private final String content;
 
     @Override
     public String toString() {
