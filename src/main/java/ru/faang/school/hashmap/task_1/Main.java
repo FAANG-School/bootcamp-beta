@@ -47,7 +47,7 @@ public class Main {
 				map.put(name, house);
 		}
 		else
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("null arguments");
 		
 	}
 	
@@ -56,14 +56,14 @@ public class Main {
 		if (name != null && map != null) 
 			map.remove(name);
 		else
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("null arguments");
 		
 	}
 	
 	public static String findHouseByNameReturnSigil(String name, Map<String, House> map) {
 		
 		if (name == null || map == null)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("null arguments");
 		
 		House house = map.get(name);
 		
@@ -72,7 +72,7 @@ public class Main {
 	
 	public static void printHousesWithSigils(Map<String, House> map) {
 		if (map == null)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("null arguments");
 		if (map.isEmpty())
 			System.out.println("There are no houses in this map");
 		
