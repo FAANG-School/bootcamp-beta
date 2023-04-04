@@ -71,6 +71,7 @@ public class Tests {
         test.addHouse(tully);
         test.printSigilInfo(stark.getName());
         String expected = "Дом "+stark.getName()+" имеет герб '"+stark.getSigil()+"'\n";
+        assertEquals(expected,outContent.toString());
         outContent.reset();
         test.printSigilInfo(tully.getName());
         String expected1 = "Дом "+tully.getName()+" имеет герб '"+tully.getSigil()+"'\n";
