@@ -5,15 +5,15 @@ import java.util.Objects;
 public class House {
     private String name;
 
-    public String getSigil() {
-        return sigil;
-    }
-
     private String sigil;
 
     public House(String name, String sigil) {
         this.name = name;
         this.sigil = sigil;
+    }
+
+    public String getSigil() {
+        return sigil;
     }
 
     @Override
