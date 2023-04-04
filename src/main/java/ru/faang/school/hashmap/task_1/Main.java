@@ -6,17 +6,23 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Map<String, House> map = new HashMap<>();
-        map.put("Старк", new House("a1", "b1"));
-        map.put("Ланнистер", new House("a2", "b2"));
-        map.put("Баратеон", new House("a3", "b3"));
+        addNewHouse(map, new House("Старк", "zxc"));
+        addNewHouse(map, new House("Ланнистер", "true"));
+        addNewHouse(map, new House("Баратеон", "ghoul"));
 
-        Methods.addNewHouse(map, "something", "a", "b");
-        Methods.removeHouse(map, "something");
+//        Methods.addNewHouse(map, house);
+//        Methods.removeHouse(map, house);
 
         for(Map.Entry<String, House> entry : map.entrySet()) {
-            System.out.println(entry.getValue().getAll());
+            System.out.println("Name: "+entry.getKey()+" sigil: "+entry.getValue().getSigil());
         }
-        System.out.println(map);
+    }
+    static void addNewHouse(Map<String, House> map, House house) {
+        map.put(house.getName(), house);
+    }
+
+    static void removeHouse(Map<String, House> map, String nameOfHome) {
+        map.remove(nameOfHome);
     }
 
 }
@@ -25,17 +31,9 @@ class House {
     private String name;
     private String sigil;
 
-    public House() {
-
-    }
-
     public House(String name, String sigil) {
         this.name = name;
         this.sigil = sigil;
-    }
-
-    public String getAll() {
-        return name+" "+sigil;
     }
 
     public String getName() {
@@ -44,15 +42,5 @@ class House {
 
     public String getSigil() {
         return sigil;
-    }
-}
-
-class Methods {
-    static void addNewHouse(Map<String, House> map, String nameOfHome, String name, String sigil) {
-        map.put(nameOfHome, new House(name, sigil));
-    }
-
-    static void removeHouse(Map<String, House> map, String nameOfHome) {
-        map.remove(nameOfHome);
     }
 }
