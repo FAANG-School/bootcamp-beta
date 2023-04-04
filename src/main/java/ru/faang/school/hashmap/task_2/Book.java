@@ -1,4 +1,4 @@
-package hashmap_solutions.task_2;
+package ru.faang.school.hashmap.task_2;
 
 import java.util.Objects;
 

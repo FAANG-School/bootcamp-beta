@@ -1,7 +1,7 @@
 package ru.faang.school;
 
-import hashmap_solutions.task_2.Book;
-import hashmap_solutions.task_2.Main;
+import ru.faang.school.hashmap.task_2.Book;
+import ru.faang.school.hashmap.task_2.Main;
 
 public class App {
     public static void main(String[] args) {
