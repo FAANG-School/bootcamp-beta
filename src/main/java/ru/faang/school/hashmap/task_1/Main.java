@@ -10,12 +10,7 @@ public class Main {
         addNewHouse(map, new House("Ланнистер", "true"));
         addNewHouse(map, new House("Баратеон", "ghoul"));
 
-//        Methods.addNewHouse(map, house);
-//        Methods.removeHouse(map, house);
-
-        for(Map.Entry<String, House> entry : map.entrySet()) {
-            System.out.println("Name: "+entry.getKey()+" sigil: "+entry.getValue().getSigil());
-        }
+        lookAtHouse(map);
     }
     static void addNewHouse(Map<String, House> map, House house) {
         map.put(house.getName(), house);
@@ -23,6 +18,12 @@ public class Main {
 
     static void removeHouse(Map<String, House> map, String nameOfHome) {
         map.remove(nameOfHome);
+    }
+
+    static void lookAtHouse(Map<String, House> map) {
+        for(Map.Entry<String, House> entry : map.entrySet()) {
+            System.out.println("Name: "+entry.getKey()+" sigil: "+entry.getValue().getSigil());
+        }
     }
 
 }
