@@ -1,6 +1,5 @@
 package ru.faang.school.hashmap.task_1;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,13 +14,12 @@ public class Main {
 
     static {
         houseMap = new LinkedHashMap<>();
-    }
-
-    public static void main(String[] args) {
         for (int i = 0; i < houseName.length - 4; i++) {
             houseMap.put(houseName[i], new House(houseName[i], houseSigil[i]));
         }
+    }
 
+    public static void main(String[] args) {
         printListOfHouse();
         System.out.println();
 
