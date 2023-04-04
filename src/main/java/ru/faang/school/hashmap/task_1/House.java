@@ -16,4 +16,12 @@ public class House {
     public String getSigil() {
         return sigil;
     }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "name='" + name + '\'' +
+                ", sigil='" + sigil + '\'' +
+                '}';
+    }
 }
