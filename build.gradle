@@ -1,19 +1,17 @@
 plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'java'
 }
 
-group 'ru.faang.school'
-version '1.0-SNAPSHOT'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
