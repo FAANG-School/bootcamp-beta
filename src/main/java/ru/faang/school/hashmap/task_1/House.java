@@ -2,11 +2,11 @@ package ru.faang.school.hashmap.task_1;
 
 import java.util.Objects;
 
-public class Home {
+public class House {
     private String name;
     private String sigil;
 
-    public Home(String name, String sigil) {
+    public House(String name, String sigil) {
         this.name = name;
         this.sigil = sigil;
     }
@@ -31,8 +31,8 @@ public class Home {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Home home = (Home) o;
-        return Objects.equals(name, home.name) && Objects.equals(sigil, home.sigil);
+        House house = (House) o;
+        return Objects.equals(name, house.name) && Objects.equals(sigil, house.sigil);
     }
 
     @Override
