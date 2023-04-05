@@ -1,6 +1,6 @@
-package ru.faang.school;
+package ru.faang.school.task_1;
 
-import ru.faang.school.task_1.*;
+import ru.faang.school.task_1.Entities.*;
 
 public class App {
     public static void main(String[] args) {

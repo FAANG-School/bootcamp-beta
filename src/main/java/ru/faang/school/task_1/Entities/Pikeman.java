@@ -1,4 +1,4 @@
-package ru.faang.school.task_1;
+package ru.faang.school.task_1.Entities;
 
 public class Pikeman extends Creature{
     public Pikeman(){

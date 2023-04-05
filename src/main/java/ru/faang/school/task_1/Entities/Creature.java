@@ -1,4 +1,4 @@
-package ru.faang.school.task_1;
+package ru.faang.school.task_1.Entities;
 
 public abstract class Creature {
     //имя, уровень, атака, защита, скорость и количество
