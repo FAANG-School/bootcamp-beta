@@ -1,4 +1,4 @@
-package ru.faang.school.hashmap.task_4;
+package ru.faang.school.hashmap.task_4.подсказки;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +8,15 @@ public class Main {
 
     public static void main(String[] args) {
         map = new HashMap<>();
+        map.put("ST", new WeatherData("ST", "14", "1"));
+        lookAtWeather();
     }
 
     static WeatherData viewTheWeather(String key) {
         if (map.containsKey(key)) {
             return map.get(key);
         }
+
 
         map.put(MocServies.apiWeather().getCity(), MocServies.apiWeather());
         return MocServies.apiWeather();
