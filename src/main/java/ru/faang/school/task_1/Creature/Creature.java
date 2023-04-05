@@ -11,6 +11,21 @@ public abstract class Creature {
 
 
     public Creature(String name, int level, int attack, int health, int speed){
+        if(name == null){
+            throw new RuntimeException("Имя не введено");
+        }
+        if(level <= 0 ){
+            throw new RuntimeException("Не корректное значение");
+        }
+        if(attack<= 0 ){
+            throw new RuntimeException("Не корректное значение");
+        }
+        if(health <= 0 ){
+            throw new RuntimeException("Не корректное значение");
+        }
+        if(speed <= 0 ){
+            throw new RuntimeException("Не корректное значение");
+        }
         this.name = name;
         this.attack = attack;
         this.health = health;
@@ -25,17 +40,13 @@ public abstract class Creature {
         return quantity;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public int getDamage(){
         return attack*speed;
     }
     public void takeDamage(Hero hero, Creature attackingCreature){
         int damage = attackingCreature.getDamage();
         int quantityToDelete = 0;
-        while (damage > 0 && quantity > 0){
+        while (damage > 0 && quantity > 0 && quantityToDelete <= quantity ){
             if (health > damage){
                 health -= damage;
                 break;

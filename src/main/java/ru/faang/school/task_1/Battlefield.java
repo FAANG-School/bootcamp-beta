@@ -11,7 +11,7 @@ public class Battlefield {
         this.secondHero = secondHero;
     }
 
-    public void battle(){
+    public Hero battle(){
         for (int i = 1; firstHero.getArmySize() > 0 && secondHero.getArmySize() > 0; i++) {
 
             if (i % 2 == 0) {
@@ -22,16 +22,16 @@ public class Battlefield {
             }
         }
         if (firstHero.getArmySize() == 0){
-            winner(secondHero);
+           return winner(secondHero);
         }
-        else {winner(firstHero);}
+        else { return winner(firstHero);}
 
     }
 
 
-    private void winner(Hero hero){
+    private Hero winner(Hero hero){
         hero.levelUp();
-        System.out.println(hero.getName() + " Won!");
+        return hero;
     }
 
 

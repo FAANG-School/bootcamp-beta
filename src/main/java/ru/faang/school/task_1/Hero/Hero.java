@@ -14,10 +14,18 @@ public class Hero {
     private final List<Creature> army = new ArrayList<>();
 
 
-    public Hero(String name, String fraction, int experience, int level) {
+    public Hero(String name, String fraction, int level) {
+        if(name == null){
+            throw new RuntimeException("Имя не введено");
+        }
+        if(fraction == null){
+            throw new RuntimeException("Фракция не введена");
+        }
+        if(level <= 0 ){
+            throw new RuntimeException("Не корректное значение");
+        }
         this.name = name;
         this.fraction = fraction;
-        this.experience = experience;
         this.level = level;
     }
 
