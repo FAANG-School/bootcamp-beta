@@ -64,7 +64,6 @@ public class StudentDB {
         }
     }
 
-    @SuppressWarnings("unused")
     public List<List<Student>> getAll(){
         List<List<Student>> l = new ArrayList<>();
         for(var entry : map.keySet()){
