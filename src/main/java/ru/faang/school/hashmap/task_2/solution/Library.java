@@ -32,7 +32,6 @@ public class Library {
      * @param book key to add
      * @param place value to add
      */
-    @SuppressWarnings("unused")
     public void add(Book book, String place){
         add(book.getTitle(), book.getAuthor(), book.getYear(), place);
     }
@@ -54,7 +53,7 @@ public class Library {
      * @param year of the release
      * @return null if year is incorrect or book was not found
      */
-    @SuppressWarnings("unused")
+
     public String get(String title, String author, int year) {
         try {
             return get(new Book(title, author, year));
