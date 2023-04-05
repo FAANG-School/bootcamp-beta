@@ -16,9 +16,6 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import ru.faang.school.hashmap.task_1.Book;
-import ru.faang.school.hashmap.task_1.Main;
-
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class Task2Test {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
