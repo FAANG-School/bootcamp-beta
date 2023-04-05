@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main {
-    public static final Map<Book, Integer> bookMap;
+    public static final Map<Book, String> bookMap;
 
     static {
         bookMap = new LinkedHashMap<>();
@@ -15,7 +15,10 @@ public class Main {
             scanner.useDelimiter("\n");
             while (scanner.hasNext()) {
                 String[] book = scanner.next().split(";");
-                bookMap.put(new Book(book[0], book[1], Integer.parseInt(book[2])), (int) (Math.random() *  5) + 1);
+                bookMap.put(
+                        new Book(book[0], book[1], Integer.parseInt(book[2])),
+                        String.valueOf((int) (Math.random() *  5) + 1)
+                );
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -26,9 +29,9 @@ public class Main {
         printAllBooks();
         System.out.println();
 
-        addBook(new Book("My Book 1","Danil Pudovkin", 2023), 1);
-        addBook(new Book("My Book 2","Danil Pudovkin", 2022), 2);
-        addBook(new Book("My Book 3","Danil Pudovkin", 2021), 3);
+        addBook(new Book("My Book 1","Danil Pudovkin", 2023), "1");
+        addBook(new Book("My Book 2","Danil Pudovkin", 2022), "2");
+        addBook(new Book("My Book 3","Danil Pudovkin", 2021), "3");
         printAllBooks();
         System.out.println();
 
@@ -41,9 +44,10 @@ public class Main {
         findAndPrintBookInfo("My Book 3","Danil Pudovkin", 2021);
         findAndPrintBookInfo("Kingdom of Ash","Sarah J. Maas", 2022);
         findAndPrintBookInfo("The Eye of the World","Robert Jordan", 1990);
+        findAndPrintBookInfo("My book 10", "Danil Pudovkin", 2015);
     }
 
-    private static void addBook(Book book, int shelfNumber) {
+    private static void addBook(Book book, String shelfNumber) {
         bookMap.put(book, shelfNumber);
     }
 
