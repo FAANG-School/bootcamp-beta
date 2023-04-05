@@ -13,14 +13,12 @@ public class Container {
         map = new HashMap<>();
     }
 
-    @SuppressWarnings("unused")
     public Container(Map<String, House> map){
         if(map == null) return;
         this.map = new HashMap<>();
         this.map.putAll(map);
     }
 
-    @SuppressWarnings("unused")
     public void add(String key, House value){
         map.put(key, value);
     }
@@ -57,7 +55,6 @@ public class Container {
         return map.get(key).getSigil();
     }
 
-    @SuppressWarnings("unused")
     public String find(House h){
         return find(h.getName());
     }
@@ -67,7 +64,6 @@ public class Container {
      *
      * @return false if there was IOException
      */
-    @SuppressWarnings("unused")
     public boolean showAll(){
         return showAll(System.out);
     }
