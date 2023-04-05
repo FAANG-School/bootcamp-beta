@@ -3,6 +3,10 @@ package ru.faang.school.hashmap.task_2;
 import java.util.Map;
 
 public class BookService {
+
+    public static void addBook(Map<Book, String> map, Book book, String shelf) {
+        map.put(book, shelf);
+    }
     public static void removeBook(Map<Book, String> map, Book book) {
 
         if (!map.containsKey(book)) {

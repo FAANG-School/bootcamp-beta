@@ -12,10 +12,9 @@ public class Main {
 
         Map<Book, String> map = new HashMap<>();
 
-        // добавление новых книг и их местонахождения в библиотеке
-        map.put(book1, "N1");
-        map.put(book2, "KD56");
-        map.put(book3, "GT2");
+        BookService.addBook(map, book1, "N1");
+        BookService.addBook(map, book2, "KD56");
+        BookService.addBook(map, book3, "GT2");
 
         BookService.getAllBooksInfo(map);
 
