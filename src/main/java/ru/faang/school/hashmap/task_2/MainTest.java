@@ -4,10 +4,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    Main libraryTest;
+    private Main libraryTest;
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
@@ -17,6 +22,12 @@ class MainTest {
         libraryTest.bookshelves.put(new Book("Thinking in Java", "Bruce Eckel", "1998"), "3");
         libraryTest.bookshelves.put(new Book("Java Concurrency in Practice", "Brian Goetz", "2006"), "1");
         libraryTest.bookshelves.put(new Book("Head First Design Pattern", "Kathy Sierra", "2004"), "2");
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
     }
 
     @Test
@@ -51,9 +62,31 @@ class MainTest {
         String name = "Head First Java";
         String author = "Kathy Sierra";
         String year = "2003";
-        String expected = "";
+        String expected = "You've found : Book{name='Head First Java', author='Kathy Sierra', year='2003'}number of shelf - 5";
         libraryTest.findBookByAttributes(name, author, year);
-        assertEquals(expected, "");
+        assertEquals(expected, outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void findBookByWrongAttributes() {
+        String name = "Head First";
+        String author = "Kathy Sierra";
+        String year = "2003";
+        String expected = "There is no a book with these attributes";
+        libraryTest.findBookByAttributes(name, author, year);
+        assertEquals(expected, outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void printWholeLibrary() {
+        String expected = "Your library contains:\r\n" +
+                "Book{name='Thinking in Java', author='Bruce Eckel', year='1998'} stays at shelf number - 3\r\n" +
+                "Book{name='Head First Java', author='Kathy Sierra', year='2003'} stays at shelf number - 5\r\n" +
+                "Book{name='Java Concurrency in Practice', author='Brian Goetz', year='2006'} stays at shelf number - 1\r\n" +
+                "Book{name='Head First Design Pattern', author='Kathy Sierra', year='2004'} stays at shelf number - 2\r\n" +
+                "Book{name='Effective Java', author='Joshua Bloch', year='2011'} stays at shelf number - 5";
+        libraryTest.printWholeLibrary();
+        assertEquals(expected, outputStreamCaptor.toString().trim());
     }
 
 

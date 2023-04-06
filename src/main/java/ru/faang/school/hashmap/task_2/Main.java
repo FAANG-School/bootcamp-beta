@@ -14,7 +14,7 @@ public class Main {
     public void removeBookByAttributes(String name, String author, String year) {
             Book book = new Book(name, author, year);
             if (bookshelves.remove(book) != null) {
-                System.out.println("You've removed : " + book.toString());
+                System.out.println("You've removed : " + book);
             } else {
                 System.out.println("There is no a book with these attributes");
             }
@@ -23,7 +23,7 @@ public class Main {
     public void findBookByAttributes(String name, String author, String year) {
         Book book = new Book(name, author, year);
         if (bookshelves.containsKey(book)) {
-            System.out.println("You've found : " + book.toString() + "number of shelf - " + bookshelves.get(book));
+            System.out.println("You've found : " + book + "number of shelf - " + bookshelves.get(book));
         } else {
             System.out.println("There is no a book with these attributes");
         }
@@ -33,18 +33,6 @@ public class Main {
         System.out.println("\nYour library contains:");
         bookshelves.forEach((book, shelf) -> System.out.println(book + " stays at shelf number - " + shelf));
     }
-
-    public static void main(String[] args) {
-
-
-        /*library.putBookOnShelf(new Book("Core Java(TM), Volume I", "Cay S. Horstmann", "2007"), "2");
-        library.removeBookByAttributes("Effective Java", "Joshua Bloch", "2011");
-        library.findBookByAttributes("Java Concurrency in Practice", "Brian Goetz", "2006");
-        library.printWholeLibrary();
-        library.findBookByAttributes("Effective Java", "Joshua Bloch", "2011");*/
-    }
-
-
 
 }
 class Book{
