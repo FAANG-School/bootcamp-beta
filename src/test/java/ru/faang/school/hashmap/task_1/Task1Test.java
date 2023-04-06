@@ -10,13 +10,13 @@ public class Task1Test {
         Main main = new Main();
 
         main.addNewHouse("Testhouse", "Testsigil");
-        Assertions.assertTrue(main.houses.containsKey("Testhouse"));
+        Assertions.assertTrue(main.getHouses().containsKey("Testhouse"));
         Assertions.assertEquals(main.getSigil("Testhouse"), "Testsigil");
 
         main.deleteHouse("Testhouse");
-        Assertions.assertFalse(main.houses.containsKey("Testhouse"));
+        Assertions.assertFalse(main.getHouses().containsKey("Testhouse"));
 
-        Assertions.assertEquals(main.getAllHousesInfo().size(), main.houses.size());
+        Assertions.assertEquals(main.getAllHousesInfo().size(), main.getHouses().size());
         Assertions.assertThrows(IllegalArgumentException.class, () -> main.deleteHouse("House not exist"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> main.getSigil("House not exist"));
     }

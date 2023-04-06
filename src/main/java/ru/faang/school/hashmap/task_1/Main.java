@@ -7,12 +7,16 @@ import java.util.Map;
 
 public class Main {
 
-    public Map<String, House> houses = new HashMap<>() {{
+    private Map<String, House> houses = new HashMap<>() {{
         put("Stark", new House("Stark", "Wolf"));
         put("Lannister", new House("Lannister", "Lion"));
         put("Barateon", new House("Barateon", "Deer"));
         put("Targaryen", new House("Targaryen", "Dragon"));
     }};
+
+    public Map<String, House> getHouses() {
+        return houses;
+    }
 
     public void addNewHouse(String houseName, String sigil) {
         houses.put(houseName, new House(houseName, sigil));
@@ -24,7 +28,6 @@ public class Main {
         } else {
             throw new IllegalArgumentException();
         }
-
     }
 
     public String getSigil(String houseName) {
