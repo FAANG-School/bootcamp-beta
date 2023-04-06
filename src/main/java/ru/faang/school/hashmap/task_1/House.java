@@ -1,17 +1,21 @@
 package ru.faang.school.hashmap.task_1;
 
-public class House {
+class House {
     private String name;
     private String sigil;
 
-    public House(String name, String sigil) {
+    protected House(String name, String sigil) {
         this.name = name;
         this.sigil = sigil;
     }
 
-    public House(){}
+    protected House(){}
 
-    public String getSigil(){
+    protected String getSigil(){
         return this.sigil;
+    }
+
+    protected String getName(){
+        return this.name;
     }
 }
