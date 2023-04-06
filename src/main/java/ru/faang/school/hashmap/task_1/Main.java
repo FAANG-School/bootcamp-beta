@@ -18,8 +18,8 @@ public class Main {
         return houses;
     }
 
-    public void addNewHouse(String houseName, String sigil) {
-        houses.put(houseName, new House(houseName, sigil));
+    public void addNewHouse(String houseName, House house) {
+        houses.put(houseName, house);
     }
 
     public void deleteHouse(String houseName) {

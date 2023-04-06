@@ -9,7 +9,7 @@ public class Task1Test {
     public void task1Tests() {
         Main main = new Main();
 
-        main.addNewHouse("Testhouse", "Testsigil");
+        main.addNewHouse("Testhouse", new House("Testhouse", "Testsigil"));
         Assertions.assertTrue(main.getHouses().containsKey("Testhouse"));
         Assertions.assertEquals(main.getSigil("Testhouse"), "Testsigil");
 
