@@ -10,7 +10,6 @@ public class Main {
         put("Moscow", new WeatherData("Moscow", 5, "55%"));
         put("Los-Angeles", new WeatherData("Los-Angeles", 15, "60%"));
         put("New-York", new WeatherData("New-York", 20, "80%"));
-
     }};
 
     public Map<String, WeatherData> getWeatherMap() {
