@@ -1,7 +1,6 @@
 package ru.faang.school.hashmap.task_5;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class WebPage {
     private String url;
@@ -29,10 +28,18 @@ public class WebPage {
 
     @Override
     public String toString() {
-        return title + " " + content;
+        return url + " " + title + ", " + content;
     }
 
-    public void setUrl(String url) {
-        this.url = "http://www." + url + ".com";
+    public String getUrl() {
+        return url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
