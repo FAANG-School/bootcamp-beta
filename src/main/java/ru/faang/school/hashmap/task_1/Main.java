@@ -35,14 +35,26 @@ public class Main {
     }
 
     private static House addHouse(final String name, final String sigil) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("'name' is empty or null");
+        }
+        if (sigil.isBlank()) {
+            throw new IllegalArgumentException("'sigil' is empty or null");
+        }
         return houseMap.put(name, new House(name, sigil));
     }
 
     private static House delHouse(final String houseName) {
+        if (houseName.isBlank()) {
+            throw new IllegalArgumentException("'houseName' is empty or null");
+        }
         return houseMap.remove(houseName);
     }
 
     private static String getSigil(final String houseName) {
+        if (houseName.isBlank()) {
+            throw new IllegalArgumentException("'houseName' is empty or null");
+        }
         return houseMap.get(houseName).sigil();
     }
 
