@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Main {
 
-    private Map<Book, String> books = new HashMap<>() {{
+    private final Map<Book, String> books = new HashMap<>() {{
         put(new Book("Title1", "Author1", 2023), "1");
         put(new Book("Title2", "Author2", 2023), "1");
         put(new Book("Title3", "Author3", 2021), "2");
