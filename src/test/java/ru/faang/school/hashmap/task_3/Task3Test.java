@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -115,7 +116,7 @@ public class Task3Test {
 		
 	}
 	
-	@Test
+	@RepeatedTest(500)
 	void searchByFacultyAndYear() {
 		
 		assertEquals(testList1, Main.searchByFacultyAndYear("Computer Science", 2020));
@@ -139,7 +140,7 @@ public class Task3Test {
 		assertEquals("Null args", exception.getMessage());
 	}
 	
-	@Test
+	@RepeatedTest(500)
 	void printByByFacultyAndYear() {
 		Main.printByByFacultyAndYear();
 		
