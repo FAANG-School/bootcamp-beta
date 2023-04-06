@@ -20,11 +20,11 @@ public class Main {
 
     public Map loadStudentsBase(List<Student> studentList) {
         for (Student student : studentList) {
-            String faculty = student.getFaculty();
-            String year = student.getYear();
+            String faculty = student.faculty();
+            String year = student.year();
             if (!studentByCourse.containsKey(Map.entry(faculty, year))) {
                 studentByCourse.put(Map.entry(faculty, year), studentList.stream()
-                        .filter(stu -> Objects.equals(stu.getFaculty(),faculty) && Objects.equals(stu.getYear(), year))
+                        .filter(stu -> Objects.equals(stu.faculty(),faculty) && Objects.equals(stu.year(), year))
                         .collect(Collectors.toList()));
             }
         }
@@ -32,8 +32,8 @@ public class Main {
     }
 
     public void addNewStudent(Student student) {
-        String faculty = student.getFaculty();
-        String year = student.getYear();
+        String faculty = student.faculty();
+        String year = student.year();
         if (studentByCourse.containsKey(Map.entry(faculty, year)))
             studentByCourse.get(Map.entry(faculty, year)).add(student);
         else {
@@ -72,28 +72,7 @@ public class Main {
 
 }
 
-class Student{
-    final private String name;
-    final private String faculty;
-    final private String year;
-
-    public Student(String name, String faculty, String year) {
-        this.name = name;
-        this.faculty = faculty;
-        this.year = year;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public String getYear() {
-        return year;
-    }
+record Student(String name, String faculty, String year) {
 
     @Override
     public String toString() {
