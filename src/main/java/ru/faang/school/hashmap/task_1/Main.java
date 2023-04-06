@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Main {
 
-    private Map<String, House> houses = new HashMap<>() {{
+    private final Map<String, House> houses = new HashMap<>() {{
         put("Stark", new House("Stark", "Wolf"));
         put("Lannister", new House("Lannister", "Lion"));
         put("Barateon", new House("Barateon", "Deer"));
