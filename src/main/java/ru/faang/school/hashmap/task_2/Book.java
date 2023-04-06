@@ -13,18 +13,6 @@ public class Book {
         this.year = year;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
     @Override
     public String toString() {
         return  "Название- '" + title + '\'' +
