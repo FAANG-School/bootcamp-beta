@@ -10,4 +10,8 @@ public class House {
     }
 
     public House(){}
+
+    public String getSigil(){
+        return this.sigil;
+    }
 }

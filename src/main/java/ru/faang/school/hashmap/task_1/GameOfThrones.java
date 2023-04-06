@@ -15,7 +15,7 @@ public class GameOfThrones {
         addHouse(houseMap,"Stark", stark);
         addHouse(houseMap,"Baratheon", baratheon);
         removeHouse(houseMap,"Baratheon");
-        System.out.println();
+        outPut(houseMap);
     }
 
     public static void addHouse(Map<String, House> houseMap,String key,House house){
@@ -25,4 +25,15 @@ public class GameOfThrones {
     public static void removeHouse(Map<String, House> houseMap,String key){
         houseMap.remove(key);
     }
+
+    public static void outPut(Map<String, House> houseMap){
+        for (Map.Entry<String, House> entry : houseMap.entrySet()) {
+            String houseName = entry.getKey();
+            House house = entry.getValue();
+            String houseSigil = house.getSigil();
+            System.out.println("House Name: " + houseName + ", House Sigil: " + houseSigil);
+        }
+    }
+
+
 }
