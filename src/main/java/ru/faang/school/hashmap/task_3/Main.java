@@ -26,12 +26,12 @@ public class Main {
 		private final String faculty;
 		private final Integer year;
 		
-		public Tuple(String faculty, Integer year) {
+		Tuple(String faculty, Integer year) {
 			this.faculty = faculty;
 			this.year = year;
 		}
 		
-		public Integer getYear() {
+		Integer getYear() {
 			return year;
 		}
 
@@ -110,12 +110,39 @@ public class Main {
 	
 	/* just for testing. 
 	 * pending delete */
-	public static void clear() {
+	public static void clearTest() {
 		students.clear();
+	}
+	
+	/* just for testing. 
+	 * pending delete */
+	public static int sizeTest() {
+		return students.size();
+	}
+	
+	/* just for testing. 
+	 * pending delete */
+	public static boolean containsTest(Student student) {
+		return students.contains(student);
+	}
+	
+	/* just for testing. 
+	 * pending delete */
+	public static void removeTest(Student student) {
+		students.remove(student);
+	}
+	
+	/* just for testing. 
+	 * pending delete */
+	public static void addTest(Student student) {
+		students.add(student);
 	}
 
 	public static void main(String[] args) {
 		
+		
+		/* unsorted print map just for testing. 
+		 * pending delete */
 		mapByFacultyAndYear().forEach((k, v) -> {
 			System.out.println(k + "\n  Students list: ");
 			v.forEach(System.out::println);
