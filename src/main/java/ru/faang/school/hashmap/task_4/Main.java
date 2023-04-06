@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Main {
 
-    private Map<String, WeatherData> weatherMap = new HashMap<>() {{
+    private final Map<String, WeatherData> weatherMap = new HashMap<>() {{
         put("Saint-Petersburg", new WeatherData("Saint-Petersburg", 3, "48%"));
         put("Moscow", new WeatherData("Moscow", 5, "55%"));
         put("Los-Angeles", new WeatherData("Los-Angeles", 15, "60%"));

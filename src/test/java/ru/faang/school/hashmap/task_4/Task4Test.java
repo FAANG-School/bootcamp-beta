@@ -14,10 +14,8 @@ public class Task4Test {
         main.updateWeatherData("Saint-Petersburg", 30);
         Assertions.assertEquals(30, main.getWeatherInfo("Saint-Petersburg").getTemperature());
 
-
         main.updateWeatherData("Saint-Petersburg", "70");
         Assertions.assertEquals("70%", main.getWeatherInfo("Saint-Petersburg").getHumidity());
-
 
         main.updateWeatherData("Saint-Petersburg", 40, "50");
         Assertions.assertEquals(40, main.getWeatherInfo("Saint-Petersburg").getTemperature());
