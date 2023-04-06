@@ -43,7 +43,7 @@ public class Main {
     }
 
     private static String getSigil(final String houseName) {
-        return houseMap.get(houseName).getSigil();
+        return houseMap.get(houseName).sigil();
     }
 
     private static Collection<House> getListOfHouse() {
