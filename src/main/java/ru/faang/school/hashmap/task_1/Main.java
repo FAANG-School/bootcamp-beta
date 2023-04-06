@@ -1,11 +1,11 @@
 package ru.faang.school.hashmap.task_1;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Main {
     private final static Map<String, House> houseMap;
-
     private final static String[] houseName = new String[]
             {"Bronn", "Arryn", "Baratheon", "Greyjoy", "Lannister", "Martell", "Stark", "Tully"};
     private final static String[] houseSigil = new String[]
@@ -31,22 +31,26 @@ public class Main {
         printListOfHouse();
         System.out.println();
 
-        printSigil("Baratheon");
+        System.out.println(getSigil("Baratheon"));;
     }
 
-    private static void addHouse(final String name, final String sigil) {
-        houseMap.put(name, new House(name, sigil));
+    private static House addHouse(final String name, final String sigil) {
+        return houseMap.put(name, new House(name, sigil));
     }
 
-    private static void delHouse(final String houseName) {
-        houseMap.remove(houseName);
+    private static House delHouse(final String houseName) {
+        return houseMap.remove(houseName);
     }
 
-    private static void printSigil(final String houseName) {
-        System.out.println(houseMap.get(houseName).getSigil());
+    private static String getSigil(final String houseName) {
+        return houseMap.get(houseName).getSigil();
+    }
+
+    private static Collection<House> getListOfHouse() {
+        return houseMap.values();
     }
 
     private static void printListOfHouse() {
-        houseMap.values().forEach(System.out::println);
+        getListOfHouse().forEach(System.out::println);
     }
 }
