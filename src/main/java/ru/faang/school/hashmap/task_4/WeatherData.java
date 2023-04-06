@@ -1,7 +1,7 @@
 package ru.faang.school.hashmap.task_4;
 
 public class WeatherData {
-    private final String city;
+    private final  String city;
     private final int temperature ;
     private final int humidity;
 

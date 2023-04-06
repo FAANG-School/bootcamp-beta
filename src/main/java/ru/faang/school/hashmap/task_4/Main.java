@@ -13,7 +13,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        printCashedCities();
+         printCashedCities();
         System.out.println(getWeatherData("Repievka"));
         updateWeatherData("Repievka");
         System.out.println(getWeatherData("Repievka"));
