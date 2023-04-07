@@ -30,21 +30,21 @@ public class BookDAO {
         return book;
     }
 
-    private void checkIsValid(String title, String author){
-        if((title == null || title.isEmpty()) || (author == null || author.isEmpty()))
+    private void checkIsValid(String title, String author) {
+        if ((title == null || title.isEmpty()) || (author == null || author.isEmpty()))
             throw new IllegalArgumentException();
     }
 
-    private void checkIsValid(Book book, String location){
+    private void checkIsValid(Book book, String location) {
         if (book == null || (location == null || location.isEmpty()))
             throw new IllegalArgumentException();
     }
 
-    public void printAll(){
+    public void printAll() {
         books.forEach(this::print);
     }
 
-    private void print(Book book, String location){
+    private void print(Book book, String location) {
         System.out.println(book + ", Shelve: " + location);
     }
 }

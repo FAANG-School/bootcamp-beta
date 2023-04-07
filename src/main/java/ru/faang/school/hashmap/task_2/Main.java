@@ -14,5 +14,11 @@ public class Main {
         bookDAO.remove("Effective Java", "Joshua Bloch", 2001);
         System.out.println("-------------Print all books--------------------------");
         bookDAO.printAll();
+
+//        System.out.println("-------------Check invalid arguments--------------------------");
+//        bookDAO.find("Unknown book", "Unknown author", 1312);
+//        bookDAO.remove("Unknown book", "Unknown author", 1233);
+//        System.out.println("-------------Print all books--------------------------");
+//        bookDAO.printAll();
     }
 }
