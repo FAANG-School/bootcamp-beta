@@ -55,7 +55,7 @@ public class WeatherData {
         return "WeatherData{" +
                 "city='" + city + '\'' +
                 ", temperature=" + temperature +
-                ", humidity=" + humidity +
+                "°C, humidity=" + humidity + "%" +
                 '}';
     }
 }

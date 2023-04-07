@@ -40,7 +40,7 @@ public class Main {
         for(Map.Entry<String, WeatherData> entry : weatherMap.entrySet()) {
             System.out.println("г."+entry.getKey()
                             +": температура "+ entry.getValue().getTemperature()
-                            +", влажность "+entry.getValue().getHumidity()+"%"
+                            +"°C, влажность "+entry.getValue().getHumidity()+"%"
                     );
         }
     }
