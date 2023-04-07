@@ -4,6 +4,18 @@ import java.util.Objects;
 
 public record Book(String title, String author, int year) {
 
+    public Book {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("title cannot be null or empty");
+        }
+        if (author == null || author.isBlank()) {
+            throw new IllegalArgumentException("author cannot be null or empty");
+        }
+        if (year <= 0) {
+            throw new IllegalArgumentException("year cannot be <= 0");
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

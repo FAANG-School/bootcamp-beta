@@ -32,32 +32,41 @@ public class Main {
         addBook(new Book("My Book 1","Danil Pudovkin", 2023), "1");
         addBook(new Book("My Book 2","Danil Pudovkin", 2022), "2");
         addBook(new Book("My Book 3","Danil Pudovkin", 2021), "3");
+        addBook(new Book("rv", "vdv", 1), "1");
         printAllBooks();
         System.out.println();
 
-        delBook("A Game of Thrones", "George R. R. Martin", 1996);
-        delBook("A Clash of Kings", "George R. R. Martin", 1998);
-        delBook("A Storm of Swords", "George R. R. Martin", 2000);
+        delBook(new Book("A Game of Thrones", "George R. R. Martin", 1996));
+        delBook(new Book("A Clash of Kings", "George R. R. Martin", 1998));
+        delBook(new Book("A Storm of Swords", "George R. R. Martin", 2000));
         printAllBooks();
         System.out.println();
 
-        findAndPrintBookInfo("My Book 3","Danil Pudovkin", 2021);
-        findAndPrintBookInfo("Kingdom of Ash","Sarah J. Maas", 2022);
-        findAndPrintBookInfo("The Eye of the World","Robert Jordan", 1990);
-        findAndPrintBookInfo("My book 10", "Danil Pudovkin", 2015);
+        getBookShelf(new Book("My Book 3","Danil Pudovkin", 2021));
+        getBookShelf(new Book("Kingdom of Ash","Sarah J. Maas", 2022));
+        getBookShelf(new Book("The Eye of the World","Robert Jordan", 1990));
+        getBookShelf(new Book("My book 10", "Danil Pudovkin", 2015));
     }
 
-    private static void addBook(Book book, String shelfNumber) {
-        bookMap.put(book, shelfNumber);
+    private static String addBook(final Book book, final String shelfNumber) {
+        if (shelfNumber == null || shelfNumber.isBlank()) {
+            throw new IllegalArgumentException("shelfNumber cannot be null or empty");
+        }
+        return bookMap.put(book, shelfNumber);
     }
 
-    private static void delBook(String title, String author, int year) {
-        bookMap.remove(new Book(title, author, year));
+    private static String delBook(final Book book) {
+        if (book == null) {
+            throw new IllegalArgumentException("book cannot be null");
+        }
+        return bookMap.remove(book);
     }
 
-    private static void findAndPrintBookInfo(String title, String author, int year) {
-        Book book = new Book(title, author, year);
-        System.out.println(book + ": Shelf = " + bookMap.get(book));
+    private static String getBookShelf(final Book book) {
+        if (book == null) {
+            throw new IllegalArgumentException("book cannot be null");
+        }
+        return bookMap.get(book);
     }
 
     private static void printAllBooks() {
