@@ -5,12 +5,15 @@ public class House {
     private final String sigil;
 
     public House(String name, String sigil) {
+        if (name == null || sigil == null){
+            throw new RuntimeException("Invalid value!");
+        }
         this.name = name;
         this.sigil = sigil;
     }
 
     public String toString(){
-        return name + " : " + sigil;
+        return String.format("%s : %s", name, sigil);
     }
 
 
