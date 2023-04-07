@@ -28,13 +28,13 @@ class Book {
     }
 
     public String getTitle(){
-        return this.title = title;
+        return title;
     }
     public String getAuthor(){
-        return this.author = author;
+        return author;
     }
 
     public int getYear(){
-        return this.year = year;
+        return  year;
     }
 }
