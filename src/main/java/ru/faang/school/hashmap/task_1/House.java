@@ -31,6 +31,10 @@ public class House {
         this.sigil = sigil;
     }
 
+    /*
+    Update: можно не создавать equals и hashCode для этой задачи, т.к. ключом является Стринг, где эти методы переопределены.
+    Но в дальнейшем может быть понадобиться)
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
