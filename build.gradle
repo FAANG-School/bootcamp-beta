@@ -1,5 +1,10 @@
 plugins {
     id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'ru.faang.school.hashmap.task_3.Main'
 }
 
 group 'ru.faang.school'
