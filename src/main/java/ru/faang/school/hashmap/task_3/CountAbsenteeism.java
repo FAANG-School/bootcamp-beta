@@ -15,10 +15,24 @@ public class CountAbsenteeism {
         outputMap(studentMap);
         remove(studentMap , "Alice Johnson", "Medicine", 4);
         outputMap(studentMap);
-        //searchByFacultyAndYear(studentMap,"Engineering", 2);
+        searchByFacultyAndYear(studentMap,"Engineering", 2);
     }
 
-
+    public static void searchByFacultyAndYear(Map<Pair, List<Student>> studentMap, String faculty, int year){
+        Pair pair = new Pair(faculty, year);
+        System.out.println();
+        System.out.println("-----------------Search result-----------------");
+        for (Map.Entry<Pair, List<Student>> entry : studentMap.entrySet()) {
+            Pair key = entry.getKey();
+            if (key.equals(pair)) {
+                List<Student> value = entry.getValue();
+                System.out.println("Faculty and Year: " + key.toString());
+                for (Student student : value) {
+                    System.out.println(student.toString());
+                }
+            }
+        }
+    }
 
     public static Map<Pair, List<Student>> remove(Map<Pair, List<Student>> studentMap, String name, String faculty, int year) {
         Student student = new Student(name, faculty, year);
