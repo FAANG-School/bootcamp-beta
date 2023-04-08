@@ -1,5 +1,7 @@
 package ru.faang.school.hashmap.task_2;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -7,7 +9,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,12 +46,12 @@ public class Task2Test {
 	void addNewBook() {
 		Book book = books.get(0);
 		
-		assertEquals(null, Main.map.get(book));
-		assertEquals(false, Main.map.containsValue("XX-000"));
-		Assert.assertEquals(5, Main.map.size());
+		assertNull(Main.map.get(book));
+		assertFalse(Main.map.containsValue("XX-000"));
+		assertEquals(5, Main.map.size());
 		
 		Main.addBook(book, "XX-000");
-		Assert.assertEquals(6, Main.map.size());
+		assertEquals(6, Main.map.size());
 		assertEquals("XX-000", Main.map.get(book));
 		
 	}
@@ -82,15 +83,15 @@ public class Task2Test {
 	@Test
 	void removeBook() {
 		Book book = books.get(0);
-		Assert.assertEquals(5, Main.map.size());
+		assertEquals(5, Main.map.size());
 		
 		Main.addBook(book, "XX-999");
-		Assert.assertEquals(6, Main.map.size());
+		assertEquals(6, Main.map.size());
 		assertEquals("XX-999", Main.map.get(book));
 		
 		Main.removeBook(book.getTitle(), book.getAuthor(), book.getYear());
-		Assert.assertEquals(5, Main.map.size());
-		assertEquals(null, Main.map.get(book));
+		assertEquals(5, Main.map.size());
+		assertNull(Main.map.get(book));
 		
 	}
 	
@@ -98,7 +99,7 @@ public class Task2Test {
 	void removeBookBadArgs() {
 		Book book = books.get(0);
 		
-		assertEquals(false, Main.map.containsKey(book));
+		assertFalse(Main.map.containsKey(book));
 		Main.removeBook(book.getTitle(), book.getAuthor(), book.getYear());
 		assertEquals("There are no books with such parameters"+"\r\n", outContent.toString());
 		
