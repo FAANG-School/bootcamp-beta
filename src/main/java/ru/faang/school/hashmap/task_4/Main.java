@@ -9,18 +9,21 @@ import java.util.Map;
  * Через задание, то есть уже второй раз, ловлю ошибку при запуске:
  * Execution failed for task ':Main.main()'.
  * > Process 'command 'C:/Program Files/Java/jdk-17/bin/java.exe'' finished with non-zero exit value 1
- *
+ * <p>
  * Invalid cache did not help.
+ * <p>
+ * Update: оказалось, что Gradle показывает нерелевантное сообщенеие из стека.
+ * А не Exception in thread "main" java.lang.UnsupportedOperationException, к которому надо еще переключиться
  */
 public class Main {
 
-    public static Map<String, WeatherData> map = Map.of(
-            "Minsk", new WeatherData("Minsk", 15, 35.5),
-            "London", new WeatherData("London", 11, 63.1),
-            "Dubai", new WeatherData("Dubai", 36, 15.5)
-    );
+    public static Map<String, WeatherData> map = new HashMap<>();
 
     public static void main(String[] args) {
+        map.put("Minsk", new WeatherData("Minsk", 15, 35.5));
+        map.put("London", new WeatherData("London", 11, 63.1));
+        map.put("Dubai", new WeatherData("Dubai", 36, 15.5));
+
         Main main = new Main();
         System.out.println(main.getInfo("Minsk"));
         main.getInfo("Brest");
@@ -55,7 +58,7 @@ public class Main {
 
     public List<String> getCities() {
         List<String> cities = new ArrayList<>();
-        for (Map.Entry<String, WeatherData> entry: map.entrySet()) {
+        for (Map.Entry<String, WeatherData> entry : map.entrySet()) {
             cities.add(entry.getKey());
         }
         return cities;

@@ -1,10 +1,18 @@
 package ru.faang.school.hashmap.task_2;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
 
+    public static Map<Book, String> map = new HashMap<>();
+
     public static void main(String[] args) {
+        map.put(new Book("Mr. Mersedes", "King", 2001), "2");
+        map.put(new Book("Бегущий за ветром", "Хоссейни", 2005), "1");
+        map.put(new Book("Финансист", "Драйзер", 1920), "4");
+
+
         Main main = new Main();
         main.printAllBooksAndPositions();
 
@@ -13,12 +21,6 @@ public class Main {
         main.getPosition(new Book("Финансист", "Драйзер", 1920));
         main.printAllBooksAndPositions();
     }
-
-    public static Map<Book, String> map = Map.of(
-            new Book("Mr. Mersedes", "King", 2001), "2",
-            new Book("Бегущий за ветром", "Хоссейни", 2005), "1",
-            new Book("Финансист", "Драйзер", 1920), "4"
-    );
 
     public void addNewBookAndItsPosition(Book newBook, String position) {
         System.out.println("************************************");
