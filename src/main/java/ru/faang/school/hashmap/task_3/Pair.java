@@ -1,6 +1,5 @@
 package ru.faang.school.hashmap.task_3;
 
-import java.time.Year;
 import java.util.Objects;
 
 public class Pair {
