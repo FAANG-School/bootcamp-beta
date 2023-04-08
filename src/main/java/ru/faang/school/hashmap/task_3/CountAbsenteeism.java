@@ -26,7 +26,7 @@ public class CountAbsenteeism {
             Pair key = entry.getKey();
             if (key.equals(pair)) {
                 List<Student> value = entry.getValue();
-                System.out.println("Faculty and Year: " + key.toString());
+                System.out.println("Faculty and Year: " + key);
                 for (Student student : value) {
                     System.out.println(student.toString());
                 }
@@ -34,11 +34,10 @@ public class CountAbsenteeism {
         }
     }
 
-    public static Map<Pair, List<Student>> remove(Map<Pair, List<Student>> studentMap, String name, String faculty, int year) {
+    public static void remove(Map<Pair, List<Student>> studentMap, String name, String faculty, int year) {
         Student student = new Student(name, faculty, year);
         Pair key = new Pair(student.getFaculty(), student.getYear());
         studentMap.get(key).remove(student);
-        return studentMap;
     }
 
 
@@ -56,14 +55,12 @@ public class CountAbsenteeism {
         return studentMap;
     }
 
-    public static Map<Pair, List<Student>> put( Map<Pair, List<Student>> studentMap, Student student){
+    public static void put( Map<Pair, List<Student>> studentMap, Student student){
         Pair key = new Pair(student.getFaculty(), student.getYear());
         if (!studentMap.containsKey(key)) {
             studentMap.put(key, new ArrayList<>());
         }
         studentMap.get(key).add(student);
-
-        return studentMap;
     }
 
     public static void outputMap( Map<Pair, List<Student>> studentMap){
