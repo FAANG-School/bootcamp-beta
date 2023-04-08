@@ -10,7 +10,7 @@ public class CountAbsenteeism {
         studentList.add(new Student("Alice Johnson", "Medicine", 4));
         studentList.add(new Student("Bob Brown", "Law", 1));
         Map<Pair, List<Student>> studentMap = createStudentMap(studentList);
-
+        outputMap(studentMap);
 
     }
 
@@ -21,12 +21,22 @@ public class CountAbsenteeism {
             Pair key = new Pair(student.getFaculty(), student.getYear());
             if (!studentMap.containsKey(key)) {
                 studentMap.put(key, new ArrayList<>());
-                System.out.println(key.toString());
             }
             studentMap.get(key).add(student);
         }
 
         return studentMap;
+    }
+
+    public static void outputMap( Map<Pair, List<Student>> studentMap){
+        for (Map.Entry<Pair, List<Student>> entry : studentMap.entrySet()) {
+            Pair key = entry.getKey();
+            List<Student> value = entry.getValue();
+            System.out.println("Faculty and Year: " + key.toString());
+            for (Student student : value) {
+                System.out.println(student.toString());
+            }
+        }
     }
 
 
