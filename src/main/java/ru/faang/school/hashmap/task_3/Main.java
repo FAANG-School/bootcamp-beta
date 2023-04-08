@@ -93,7 +93,7 @@ public class Main {
 		return mapByFacultyAndYear().get(new Tuple(faculty, year));
 	}
 	
-	public static void printByByFacultyAndYear() {
+	public static void printByFacultyAndYear() {
 		
 		if(students.isEmpty())
 			System.out.println("Students list is empty");

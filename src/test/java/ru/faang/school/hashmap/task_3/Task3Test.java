@@ -141,8 +141,8 @@ public class Task3Test {
 	}
 	
 	@RepeatedTest(500)
-	void printByByFacultyAndYear() {
-		Main.printByByFacultyAndYear();
+	void printByFacultyAndYear() {
+		Main.printByFacultyAndYear();
 		
 		assertEquals("faculty: Computer Science, year: 2020\n  Students list:\r\n" +
 					 "Donald Ervin Knuth\r\n" +
@@ -159,9 +159,9 @@ public class Task3Test {
 	}
 	
 	@Test
-	void z_printByByFacultyAndYearEmpty() {
+	void z_printByFacultyAndYearEmpty() {
 		Main.clearTest();
-		Main.printByByFacultyAndYear();
+		Main.printByFacultyAndYear();
 		assertEquals("Students list is empty"+"\r\n", outContent.toString());
 		
 	}
