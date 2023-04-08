@@ -11,9 +11,7 @@ public class Main {
         addHouse("Rich Bastards", "Lanister", "Lion", houses);
 
         addHouse("n", "N", "Lion", houses);
-        System.out.println(houses);
-
-        System.out.println(houses.get("Cool guys"));
+       
 
         printHouses(houses);
 
