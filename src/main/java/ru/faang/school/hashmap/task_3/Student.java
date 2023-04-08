@@ -26,4 +26,9 @@ public class Student {
         return year;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Faculty: " + faculty + ", Year: " + year;
+    }
+
 }
