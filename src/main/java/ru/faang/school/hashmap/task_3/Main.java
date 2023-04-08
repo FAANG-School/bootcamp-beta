@@ -50,9 +50,12 @@ public class Main {
 
     private static Map<Pair, List<String>> setMap(List<Student> students) {
         Map<Pair, List<String>> pairListMap = new HashMap<>();
+        Set<Pair> pairs = new HashSet<>();
         for (Student student : students) {
             Pair pair = new Pair(student.getFaculty(), student.getYear());
-            pairListMap.getOrDefault(pair, new ArrayList<>()).add(student.getName());
+            if (pairs.add(pair))
+                pairListMap.put(pair, new ArrayList<>());
+            pairListMap.get(pair).add(student.getName());
         }
         return pairListMap;
     }
