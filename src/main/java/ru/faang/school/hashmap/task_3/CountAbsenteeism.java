@@ -51,7 +51,6 @@ public class CountAbsenteeism {
             }
             studentMap.get(key).add(student);
         }
-
         return studentMap;
     }
 
