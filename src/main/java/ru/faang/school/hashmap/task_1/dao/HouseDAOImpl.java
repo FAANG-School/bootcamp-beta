@@ -1,11 +1,11 @@
-package ru.faang.school.hashmap.task_1.services;
+package ru.faang.school.hashmap.task_1.dao;
 
 import ru.faang.school.hashmap.task_1.domain.House;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class HouseServiceImpl implements HouseService {
+public class HouseDAOImpl implements HouseDAO {
 
     private static final Map<String, House> houses = new HashMap<>();
 

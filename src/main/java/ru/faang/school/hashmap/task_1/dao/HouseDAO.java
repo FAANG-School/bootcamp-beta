@@ -1,8 +1,8 @@
-package ru.faang.school.hashmap.task_1.services;
+package ru.faang.school.hashmap.task_1.dao;
 
 import ru.faang.school.hashmap.task_1.domain.House;
 
-public interface HouseService {
+public interface HouseDAO {
 
     void addNewHouse(House house);
 
