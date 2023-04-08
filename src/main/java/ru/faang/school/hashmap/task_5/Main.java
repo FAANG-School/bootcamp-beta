@@ -44,7 +44,7 @@ public class Main {
 			throw new IllegalArgumentException("Null args");
 		}
 			
-		return map.get(keyword);
+		return map.get(keyword.toLowerCase());
 	}
 	
 	public static void removePage(String url) {
