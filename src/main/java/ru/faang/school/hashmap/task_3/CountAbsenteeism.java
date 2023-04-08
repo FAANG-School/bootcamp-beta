@@ -11,8 +11,22 @@ public class CountAbsenteeism {
         studentList.add(new Student("Bob Brown", "Law", 1));
         Map<Pair, List<Student>> studentMap = createStudentMap(studentList);
         outputMap(studentMap);
-
+        put(studentMap, new Student("Jane Brown", "Medicine", 4));
+        outputMap(studentMap);
+        remove(studentMap , "Alice Johnson", "Medicine", 4);
+        outputMap(studentMap);
+        //searchByFacultyAndYear(studentMap,"Engineering", 2);
     }
+
+
+
+    public static Map<Pair, List<Student>> remove(Map<Pair, List<Student>> studentMap, String name, String faculty, int year) {
+        Student student = new Student(name, faculty, year);
+        Pair key = new Pair(student.getFaculty(), student.getYear());
+        studentMap.get(key).remove(student);
+        return studentMap;
+    }
+
 
     public static Map<Pair, List<Student>> createStudentMap(List<Student> studentList) {
         Map<Pair, List<Student>> studentMap = new HashMap<>();
@@ -28,7 +42,19 @@ public class CountAbsenteeism {
         return studentMap;
     }
 
+    public static Map<Pair, List<Student>> put( Map<Pair, List<Student>> studentMap, Student student){
+        Pair key = new Pair(student.getFaculty(), student.getYear());
+        if (!studentMap.containsKey(key)) {
+            studentMap.put(key, new ArrayList<>());
+        }
+        studentMap.get(key).add(student);
+
+        return studentMap;
+    }
+
     public static void outputMap( Map<Pair, List<Student>> studentMap){
+        System.out.println();
+        System.out.println("-----------------Output result-----------------");
         for (Map.Entry<Pair, List<Student>> entry : studentMap.entrySet()) {
             Pair key = entry.getKey();
             List<Student> value = entry.getValue();
