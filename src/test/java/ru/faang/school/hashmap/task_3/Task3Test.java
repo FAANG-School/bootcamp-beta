@@ -1,6 +1,8 @@
 package ru.faang.school.hashmap.task_3;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -38,9 +40,9 @@ public class Task3Test {
 	
 	@Test
 	void add() {
-		assertEquals(false, Main.containsTest(student));
+		assertFalse(Main.containsTest(student));
 		Main.add(student);
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 	}
 	
 	@Test
@@ -53,9 +55,9 @@ public class Task3Test {
 	
 	@Test
 	void addExisted() {
-		assertEquals(false, Main.containsTest(student));
+		assertFalse(Main.containsTest(student));
 		Main.add(student);
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		assertEquals(7, Main.sizeTest());
 		Main.add(student);
 		assertEquals("This student already exists"+"\r\n", outContent.toString());
@@ -64,40 +66,40 @@ public class Task3Test {
 	
 	@Test
 	void remove() {
-		assertEquals(false, Main.containsTest(student));
+		assertFalse(Main.containsTest(student));
 		Main.addTest(student);
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		Main.remove("John Michael Osbourne", "Music", 2021);
-		assertEquals(false, Main.containsTest(student));
+		assertFalse(Main.containsTest(student));
 	}
 	
 	@Test
 	void removeNotExisted() {
 		Main.addTest(student);
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		
 		Main.remove("John Michael Osbourne Junior", "Music", 2021);
 		assertEquals("No such student in list"+"\r\n", outContent.toString());
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		
 		System.setOut(originalOut);
 		
 		Main.remove("John Michael Osbourne", "Design", 2021);
 		assertEquals("No such student in list"+"\r\n", outContent.toString());
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		
 		System.setOut(originalOut);
 		
 		Main.remove("John Michael Osbourne", "Music", 2020);
 		assertEquals("No such student in list"+"\r\n", outContent.toString());
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 	}
 	
 	@Test
 	void removeNullArgs() {
-		assertEquals(false, Main.containsTest(student));
+		assertFalse(Main.containsTest(student));
 		Main.addTest(student);
-		assertEquals(true, Main.containsTest(student));
+		assertTrue(Main.containsTest(student));
 		
 		Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
 				() -> Main.remove("John Michael Osbourne", "Music", null));
