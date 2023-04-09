@@ -62,6 +62,9 @@ public class SearchEngine {
                 result.addAll(map.getValue());
             }
         }
+        if (result.isEmpty()){
+            System.out.println("Not found :(");
+        }
         return result;
     }
 
