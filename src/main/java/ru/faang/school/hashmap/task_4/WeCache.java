@@ -1,6 +1,9 @@
 package ru.faang.school.hashmap.task_4;
 
 
+import ru.faang.school.hashmap.task_3.Pair;
+import ru.faang.school.hashmap.task_3.Student;
+
 import java.util.*;
 
 
@@ -19,6 +22,7 @@ public class WeCache {
         removeWeatherInfo(weatherDataMap, "Kyiv");
         System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
         System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
+        outputMap(weatherDataMap);
     }
 
     private static void removeWeatherInfo(Map<String, WeatherData> weatherDataMap, String city) {
@@ -43,5 +47,12 @@ public class WeCache {
         weatherData.setTemperature(10);
     }
 
-
+    public static void outputMap(Map<String, WeatherData> weatherDataMap){
+        System.out.println();
+        System.out.println("-----------------Output result-----------------");
+        for (Map.Entry<String, WeatherData> entry : weatherDataMap.entrySet()) {
+            WeatherData value = entry.getValue();
+            System.out.println("City; " + value.getCity() + ", Temperature: " + value.getTemperature() + ", Humidity: " + value.getHumidity());
+        }
+    }
 }
