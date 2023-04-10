@@ -14,6 +14,17 @@ public class WeCache {
         weatherDataMap.put("Brovaru", new WeatherData("Brovaru", 18,33) );
         weatherDataMap.put("Dnipro", new WeatherData("Dnipro", 13 ,25) );
         System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
+        updateCityInfo(kyiv);
+        System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
+        removeWeatherInfo(weatherDataMap, "Kyiv");
+        System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
+        System.out.println(weatherInfo(weatherDataMap, "Kyiv"));
+    }
+
+    private static void removeWeatherInfo(Map<String, WeatherData> weatherDataMap, String city) {
+        if(weatherDataMap.containsKey(city)){
+            weatherDataMap.remove(city);
+        }
     }
 
     public static String weatherInfo(Map<String, WeatherData> weatherDataMap, String city){
@@ -23,7 +34,7 @@ public class WeCache {
                 return "Temperature: " + weatherData.getTemperature() + ", Humidity: " + weatherData.getHumidity();
             }
         }
-        weatherDataMap.put(city, new WeatherData(city , (int) Math.random() * 3, (int) Math.random() * 3));
+        weatherDataMap.put(city, new WeatherData(city , 13, 33));
         return  "Information about weather in " + city + " cached.";
     }
 
