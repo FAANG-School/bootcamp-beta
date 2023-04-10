@@ -22,4 +22,16 @@ public class WeatherData {
     public int getHumidity() {
         return humidity;
     }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
 }

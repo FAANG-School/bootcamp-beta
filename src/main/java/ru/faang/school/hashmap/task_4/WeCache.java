@@ -23,11 +23,13 @@ public class WeCache {
                 return "Temperature: " + weatherData.getTemperature() + ", Humidity: " + weatherData.getHumidity();
             }
         }
-
         weatherDataMap.put(city, new WeatherData(city , (int) Math.random() * 3, (int) Math.random() * 3));
-
         return  "Information about weather in " + city + " cached.";
+    }
 
+    public static void updateCityInfo(WeatherData weatherData){
+        weatherData.setHumidity(10);
+        weatherData.setTemperature(10);
     }
 
 
