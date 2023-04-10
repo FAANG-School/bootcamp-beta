@@ -26,7 +26,7 @@ public class Main {
 	private static class Tuple {
 
 		private final String faculty;
-		private final Integer year;
+		private final int year;
 
 		private Tuple(String faculty, int year) {
 			this.faculty = faculty;
@@ -91,7 +91,7 @@ public class Main {
 		}
 		else {
 			STUDENTS_MAP.values().forEach(value -> value.remove(student));
-			/* STUDENTS_MAP.values().removeIf(Set::isEmpty); */ // uncomment if it needs to remove key with empty value
+			STUDENTS_MAP.values().removeIf(Set::isEmpty); 
 				
 		}
 	}
@@ -108,7 +108,7 @@ public class Main {
 		if (STUDENTS.isEmpty())
 			System.out.println("Students list is empty");
 		else
-			mapByFacultyAndYear().entrySet().stream()
+			STUDENTS_MAP.entrySet().stream()
 					.sorted(Map.Entry.comparingByKey(Comparator.comparing(Tuple::getYear))).forEach(e -> {
 						System.out.println(e.getKey() + "\n  Students list:");
 						e.getValue().forEach(System.out::println);
@@ -142,17 +142,20 @@ public class Main {
 	 */
 	public static void removeTest(Student student) {
 		STUDENTS.remove(student);
+		STUDENTS_MAP.values().forEach(value -> value.remove(student));
+		STUDENTS_MAP.values().removeIf(Set::isEmpty);
 	}
 
 	/*
 	 * just for testing. pending delete
 	 */
 	public static void addTest(Student student) {
+		Tuple key = new Tuple(student.getFaculty(), student.getYear());
 		STUDENTS.add(student);
+		STUDENTS_MAP.computeIfAbsent(key, set -> new HashSet<>()).add(student);
 	}
 
 	public static void main(String[] args) {
-
 		/*
 		 * unsorted print map just for testing. pending delete
 		 */
@@ -161,7 +164,6 @@ public class Main {
 			v.forEach(System.out::println);
 			System.out.println();
 		});
-
 	}
 
 }
