@@ -1,11 +1,19 @@
 package ru.faang.school.hashmap.task_1;
 
-import java.util.Collection;
+import ru.faang.school.hashmap.task_1.exception.HousesNotEmptyException;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
     private Map<String, House> houses = new HashMap<>();
+
+    public boolean isHouseExist(final String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name cannot be null or empty");
+        }
+        return houses.containsKey(name);
+    }
 
     public void addHouse(final String name, final String sigil) {
         if (name == null || name.isBlank()) {
@@ -15,13 +23,6 @@ public class Main {
             throw new IllegalArgumentException("sigil cannot be null or empty");
         }
         houses.putIfAbsent(name, new House(name, sigil));
-    }
-
-    public boolean isHouseExist(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("name cannot be null or empty");
-        }
-        return houses.containsKey(name);
     }
 
     public void removeHouseByName(final String name) {
@@ -42,10 +43,6 @@ public class Main {
         }
     }
 
-    public Collection<House> getListOfHouse() {
-        return houses.values();
-    }
-
     private void printListOfHouse() {
         houses.values().forEach(System.out::println);
     }
@@ -54,10 +51,14 @@ public class Main {
         return Map.copyOf(houses);
     }
 
-    public void setHouses(Map<String, House> houses) {
+    public void setHouses(final Map<String, House> houses) {
         if (houses == null) {
             throw new IllegalArgumentException("houses cannot be null");
         }
-        this.houses = Map.copyOf(houses);
+        if (!this.houses.isEmpty()) {
+            throw new HousesNotEmptyException("Cannot set, houses collection is not empty");
+        } else {
+            this.houses = houses;
+        }
     }
 }

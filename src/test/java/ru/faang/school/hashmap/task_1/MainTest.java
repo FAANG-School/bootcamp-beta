@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
+import ru.faang.school.hashmap.task_1.exception.HousesNotEmptyException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,14 +42,24 @@ class MainTest {
         );
     }
 
+    @Test
+    void testIsHouseExist() {
+        assertFalse(MAIN.isHouseExist("Tully"));
+        MAIN.addHouse("Tully", "Silver Trout");
+        assertTrue(MAIN.isHouseExist("Tully"));
+    }
+
     @ParameterizedTest
     @MethodSource("provideStringsForAddHouse")
-    void addHouseWithNullOrEmptyArgs(String name, String sigil) {
-        assertThrows(IllegalArgumentException.class, () -> MAIN.addHouse(name, sigil));
+    void testMethodsWithNullOrEmptyArgs(String arg1, String arg2) {
+        assertThrows(IllegalArgumentException.class, () -> MAIN.isHouseExist(arg1));
+        assertThrows(IllegalArgumentException.class, () -> MAIN.addHouse(arg1, arg2));
+        assertThrows(IllegalArgumentException.class, () -> MAIN.removeHouseByName(arg1));
+        assertThrows(IllegalArgumentException.class, () -> MAIN.getSigilByHouseName(arg1));
     }
 
     @Test
-    void addExistingHouse() {
+    void testAddExistingHouse() {
         assertTrue(MAIN.isHouseExist("Greyjoy"));
 
         String oldSigil = MAIN.getSigilByHouseName("Greyjoy");
@@ -60,52 +70,41 @@ class MainTest {
     }
 
     @Test
-    void addNonExistingHouse() {
+    void testAddNonExistingHouse() {
         assertFalse(MAIN.isHouseExist("Lannister"));
         MAIN.addHouse("Lannister", "Golden Lion");
         assertTrue(MAIN.isHouseExist("Lannister"));
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    void removeHouseWithNullOrEmptyArg(String houseName) {
-        assertThrows(IllegalArgumentException.class, () -> MAIN.removeHouseByName(houseName));
-    }
-
     @Test
-    void removeExistingHouse() {
+    void testRemoveExistingHouse() {
         assertTrue(MAIN.isHouseExist("Bronn"));
         MAIN.removeHouseByName("Bronn");
         assertFalse(MAIN.isHouseExist("Bronn"));
     }
 
     @Test
-    void delNonExistingHouse() {
+    void testRemoveNonExistingHouse() {
         assertFalse(MAIN.isHouseExist("Tully"));
         MAIN.removeHouseByName("Tully");
         assertFalse(MAIN.isHouseExist("Tully"));
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    void getSigilWithNullOrEmptyArg(String houseName) {
-        assertThrows(RuntimeException.class, () -> MAIN.getSigilByHouseName(houseName));
-    }
-
     @Test
-    void getSigilOfNonExistingHouse() {
+    void testGetSigilOfNonExistingHouse() {
         assertFalse(MAIN.isHouseExist("Martell"));
         assertEquals(MAIN.getSigilByHouseName("Martell"), "unknown");
     }
 
     @Test
-    void getSigilOfExistingHouse() {
+    void testGetSigilOfExistingHouse() {
         assertTrue(MAIN.isHouseExist("Arryn"));
         assertEquals(MAIN.getSigilByHouseName("Arryn"), "White Falcon");
     }
 
     @Test
-    void getListOfHouse() {
-        assertFalse(MAIN.getListOfHouse().isEmpty());
+    void testSetHouses() {
+        assertThrows(IllegalArgumentException.class, () -> MAIN.setHouses(null));
+        assertThrows(HousesNotEmptyException.class, () -> MAIN.setHouses(new HashMap<>()));
     }
 }
