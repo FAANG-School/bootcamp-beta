@@ -32,7 +32,11 @@ public class Main {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null or empty");
         }
-        return houses.getOrDefault(name, new House("unknown", "unknown")).sigil();
+        if (houses.containsKey(name)) {
+            return houses.get(name).sigil();
+        } else {
+            return "unknown";
+        }
     }
 
     public Collection<House> getListOfHouse() {
