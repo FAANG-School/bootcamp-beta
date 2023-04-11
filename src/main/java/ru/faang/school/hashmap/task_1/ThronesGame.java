@@ -5,7 +5,7 @@ import ru.faang.school.hashmap.task_1.exception.HousesNotEmptyException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class ThronesGame {
     private Map<String, House> houses = new HashMap<>();
 
     public boolean isHouseExist(final String name) {

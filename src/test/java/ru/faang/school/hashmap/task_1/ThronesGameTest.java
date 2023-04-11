@@ -16,8 +16,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
-    final static Main MAIN = new Main();
+class ThronesGameTest {
+    final static ThronesGame THRONES_GAME = new ThronesGame();
 
     @BeforeAll
     static void setUp() {
@@ -32,7 +32,7 @@ class MainTest {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        MAIN.setHouses(houses);
+        THRONES_GAME.setHouses(houses);
     }
 
     private static Stream<Arguments> provideStringsForAddHouse() {
@@ -44,67 +44,67 @@ class MainTest {
 
     @Test
     void testIsHouseExist() {
-        assertFalse(MAIN.isHouseExist("Tully"));
-        MAIN.addHouse("Tully", "Silver Trout");
-        assertTrue(MAIN.isHouseExist("Tully"));
+        assertFalse(THRONES_GAME.isHouseExist("Tully"));
+        THRONES_GAME.addHouse("Tully", "Silver Trout");
+        assertTrue(THRONES_GAME.isHouseExist("Tully"));
     }
 
     @ParameterizedTest
     @MethodSource("provideStringsForAddHouse")
     void testMethodsWithNullOrEmptyArgs(String arg1, String arg2) {
-        assertThrows(IllegalArgumentException.class, () -> MAIN.isHouseExist(arg1));
-        assertThrows(IllegalArgumentException.class, () -> MAIN.addHouse(arg1, arg2));
-        assertThrows(IllegalArgumentException.class, () -> MAIN.removeHouseByName(arg1));
-        assertThrows(IllegalArgumentException.class, () -> MAIN.getSigilByHouseName(arg1));
+        assertThrows(IllegalArgumentException.class, () -> THRONES_GAME.isHouseExist(arg1));
+        assertThrows(IllegalArgumentException.class, () -> THRONES_GAME.addHouse(arg1, arg2));
+        assertThrows(IllegalArgumentException.class, () -> THRONES_GAME.removeHouseByName(arg1));
+        assertThrows(IllegalArgumentException.class, () -> THRONES_GAME.getSigilByHouseName(arg1));
     }
 
     @Test
     void testAddExistingHouse() {
-        assertTrue(MAIN.isHouseExist("Greyjoy"));
+        assertTrue(THRONES_GAME.isHouseExist("Greyjoy"));
 
-        String oldSigil = MAIN.getSigilByHouseName("Greyjoy");
-        MAIN.addHouse("Greyjoy", "Gold Kraken");
-        String newSigil = MAIN.getSigilByHouseName("Greyjoy");
+        String oldSigil = THRONES_GAME.getSigilByHouseName("Greyjoy");
+        THRONES_GAME.addHouse("Greyjoy", "Gold Kraken");
+        String newSigil = THRONES_GAME.getSigilByHouseName("Greyjoy");
 
         assertEquals(oldSigil, newSigil);
     }
 
     @Test
     void testAddNonExistingHouse() {
-        assertFalse(MAIN.isHouseExist("Lannister"));
-        MAIN.addHouse("Lannister", "Golden Lion");
-        assertTrue(MAIN.isHouseExist("Lannister"));
+        assertFalse(THRONES_GAME.isHouseExist("Lannister"));
+        THRONES_GAME.addHouse("Lannister", "Golden Lion");
+        assertTrue(THRONES_GAME.isHouseExist("Lannister"));
     }
 
     @Test
     void testRemoveExistingHouse() {
-        assertTrue(MAIN.isHouseExist("Bronn"));
-        MAIN.removeHouseByName("Bronn");
-        assertFalse(MAIN.isHouseExist("Bronn"));
+        assertTrue(THRONES_GAME.isHouseExist("Bronn"));
+        THRONES_GAME.removeHouseByName("Bronn");
+        assertFalse(THRONES_GAME.isHouseExist("Bronn"));
     }
 
     @Test
     void testRemoveNonExistingHouse() {
-        assertFalse(MAIN.isHouseExist("Tully"));
-        MAIN.removeHouseByName("Tully");
-        assertFalse(MAIN.isHouseExist("Tully"));
+        assertFalse(THRONES_GAME.isHouseExist("Tully"));
+        THRONES_GAME.removeHouseByName("Tully");
+        assertFalse(THRONES_GAME.isHouseExist("Tully"));
     }
 
     @Test
     void testGetSigilOfNonExistingHouse() {
-        assertFalse(MAIN.isHouseExist("Martell"));
-        assertEquals(MAIN.getSigilByHouseName("Martell"), "unknown");
+        assertFalse(THRONES_GAME.isHouseExist("Martell"));
+        assertEquals(THRONES_GAME.getSigilByHouseName("Martell"), "unknown");
     }
 
     @Test
     void testGetSigilOfExistingHouse() {
-        assertTrue(MAIN.isHouseExist("Arryn"));
-        assertEquals(MAIN.getSigilByHouseName("Arryn"), "White Falcon");
+        assertTrue(THRONES_GAME.isHouseExist("Arryn"));
+        assertEquals(THRONES_GAME.getSigilByHouseName("Arryn"), "White Falcon");
     }
 
     @Test
     void testSetHouses() {
-        assertThrows(IllegalArgumentException.class, () -> MAIN.setHouses(null));
-        assertThrows(HousesNotEmptyException.class, () -> MAIN.setHouses(new HashMap<>()));
+        assertThrows(IllegalArgumentException.class, () -> THRONES_GAME.setHouses(null));
+        assertThrows(HousesNotEmptyException.class, () -> THRONES_GAME.setHouses(new HashMap<>()));
     }
 }
