@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -17,20 +18,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     final static Main MAIN = new Main();
-    final static Map<String, House> HOUSES = MAIN.getHouses();
 
     @BeforeAll
     static void setUp() {
+        Map<String, House> houses = new HashMap<>();
         try (Scanner scanner = new Scanner(
                 new File("src/test/java/ru/faang/school/hashmap/task_1/sample.csv"))) {
             scanner.useDelimiter("\n");
             for (int i = 0; i <= 3; i++) {
                 String[] house = scanner.next().split(";");
-                HOUSES.put(house[0], new House(house[0], house[1]));
+                houses.put(house[0], new House(house[0], house[1]));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        MAIN.setHouses(houses);
     }
 
     private static Stream<Arguments> provideStringsForAddHouse() {
@@ -48,7 +50,7 @@ class MainTest {
 
     @Test
     void addExistingHouse() {
-        assertTrue(HOUSES.containsKey("Greyjoy"));
+        assertTrue(MAIN.isHouseExist("Greyjoy"));
 
         String oldSigil = MAIN.getSigilByHouseName("Greyjoy");
         MAIN.addHouse("Greyjoy", "Gold Kraken");
@@ -59,29 +61,29 @@ class MainTest {
 
     @Test
     void addNonExistingHouse() {
-        assertFalse(HOUSES.containsKey("Lannister"));
+        assertFalse(MAIN.isHouseExist("Lannister"));
         MAIN.addHouse("Lannister", "Golden Lion");
-        assertTrue(HOUSES.containsKey("Lannister"));
+        assertTrue(MAIN.isHouseExist("Lannister"));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
-    void delHouseWithNullOrEmptyArg(String houseName) {
+    void removeHouseWithNullOrEmptyArg(String houseName) {
         assertThrows(IllegalArgumentException.class, () -> MAIN.removeHouseByName(houseName));
     }
 
     @Test
-    void delExistingHouse() {
-        assertTrue(HOUSES.containsKey("Bronn"));
+    void removeExistingHouse() {
+        assertTrue(MAIN.isHouseExist("Bronn"));
         MAIN.removeHouseByName("Bronn");
-        assertFalse(HOUSES.containsKey("Bronn"));
+        assertFalse(MAIN.isHouseExist("Bronn"));
     }
 
     @Test
     void delNonExistingHouse() {
-        assertFalse(HOUSES.containsKey("Tully"));
+        assertFalse(MAIN.isHouseExist("Tully"));
         MAIN.removeHouseByName("Tully");
-        assertFalse(HOUSES.containsKey("Tully"));
+        assertFalse(MAIN.isHouseExist("Tully"));
     }
 
     @ParameterizedTest
@@ -92,13 +94,13 @@ class MainTest {
 
     @Test
     void getSigilOfNonExistingHouse() {
-        assertFalse(HOUSES.containsKey("Martell"));
+        assertFalse(MAIN.isHouseExist("Martell"));
         assertEquals(MAIN.getSigilByHouseName("Martell"), "unknown");
     }
 
     @Test
     void getSigilOfExistingHouse() {
-        assertTrue(HOUSES.containsKey("Arryn"));
+        assertTrue(MAIN.isHouseExist("Arryn"));
         assertEquals(MAIN.getSigilByHouseName("Arryn"), "White Falcon");
     }
 

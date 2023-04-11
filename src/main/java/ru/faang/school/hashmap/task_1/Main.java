@@ -5,11 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    private final Map<String, House> houses = new HashMap<>();
-
-    public Map<String, House> getHouses() {
-        return houses;
-    }
+    private Map<String, House> houses = new HashMap<>();
 
     public void addHouse(final String name, final String sigil) {
         if (name == null || name.isBlank()) {
@@ -19,6 +15,13 @@ public class Main {
             throw new IllegalArgumentException("sigil cannot be null or empty");
         }
         houses.putIfAbsent(name, new House(name, sigil));
+    }
+
+    public boolean isHouseExist(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name cannot be null or empty");
+        }
+        return houses.containsKey(name);
     }
 
     public void removeHouseByName(final String name) {
@@ -44,6 +47,17 @@ public class Main {
     }
 
     private void printListOfHouse() {
-        getListOfHouse().forEach(System.out::println);
+        houses.values().forEach(System.out::println);
+    }
+
+    public Map<String, House> getHouses() {
+        return Map.copyOf(houses);
+    }
+
+    public void setHouses(Map<String, House> houses) {
+        if (houses == null) {
+            throw new IllegalArgumentException("houses cannot be null");
+        }
+        this.houses = Map.copyOf(houses);
     }
 }
