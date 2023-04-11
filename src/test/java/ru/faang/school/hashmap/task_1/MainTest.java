@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     final static Main MAIN = new Main();
-    final static Map<String, House> HOUSE_MAP = MAIN.getHouseMap();
+    final static Map<String, House> HOUSES = MAIN.getHouses();
 
     @BeforeAll
     static void setUp() {
@@ -26,7 +26,7 @@ class MainTest {
             scanner.useDelimiter("\n");
             for (int i = 0; i <= 3; i++) {
                 String[] house = scanner.next().split(";");
-                HOUSE_MAP.put(house[0], new House(house[0], house[1]));
+                HOUSES.put(house[0], new House(house[0], house[1]));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -48,7 +48,7 @@ class MainTest {
 
     @Test
     void addExistingHouse() {
-        assertTrue(HOUSE_MAP.containsKey("Greyjoy"));
+        assertTrue(HOUSES.containsKey("Greyjoy"));
 
         String oldSigil = MAIN.getSigilByHouseName("Greyjoy");
         MAIN.addHouse("Greyjoy", "Gold Kraken");
@@ -59,9 +59,9 @@ class MainTest {
 
     @Test
     void addNonExistingHouse() {
-        assertFalse(HOUSE_MAP.containsKey("Lannister"));
+        assertFalse(HOUSES.containsKey("Lannister"));
         MAIN.addHouse("Lannister", "Golden Lion");
-        assertTrue(HOUSE_MAP.containsKey("Lannister"));
+        assertTrue(HOUSES.containsKey("Lannister"));
     }
 
     @ParameterizedTest
@@ -72,16 +72,16 @@ class MainTest {
 
     @Test
     void delExistingHouse() {
-        assertTrue(HOUSE_MAP.containsKey("Bronn"));
+        assertTrue(HOUSES.containsKey("Bronn"));
         MAIN.removeHouseByName("Bronn");
-        assertFalse(HOUSE_MAP.containsKey("Bronn"));
+        assertFalse(HOUSES.containsKey("Bronn"));
     }
 
     @Test
     void delNonExistingHouse() {
-        assertFalse(HOUSE_MAP.containsKey("Tully"));
+        assertFalse(HOUSES.containsKey("Tully"));
         MAIN.removeHouseByName("Tully");
-        assertFalse(HOUSE_MAP.containsKey("Tully"));
+        assertFalse(HOUSES.containsKey("Tully"));
     }
 
     @ParameterizedTest
@@ -92,13 +92,13 @@ class MainTest {
 
     @Test
     void getSigilOfNonExistingHouse() {
-        assertFalse(HOUSE_MAP.containsKey("Martell"));
+        assertFalse(HOUSES.containsKey("Martell"));
         assertEquals(MAIN.getSigilByHouseName("Martell"), "unknown");
     }
 
     @Test
     void getSigilOfExistingHouse() {
-        assertTrue(HOUSE_MAP.containsKey("Arryn"));
+        assertTrue(HOUSES.containsKey("Arryn"));
         assertEquals(MAIN.getSigilByHouseName("Arryn"), "White Falcon");
     }
 

@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    private final Map<String, House> houseMap = new HashMap<>();
+    private final Map<String, House> houses = new HashMap<>();
 
-    public Map<String, House> getHouseMap() {
-        return houseMap;
+    public Map<String, House> getHouses() {
+        return houses;
     }
 
     public void addHouse(final String name, final String sigil) {
@@ -18,25 +18,25 @@ public class Main {
         if (sigil == null || sigil.isBlank()) {
             throw new IllegalArgumentException("sigil cannot be null or empty");
         }
-        houseMap.putIfAbsent(name, new House(name, sigil));
+        houses.putIfAbsent(name, new House(name, sigil));
     }
 
     public void removeHouseByName(final String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null or empty");
         }
-        houseMap.remove(name);
+        houses.remove(name);
     }
 
     public String getSigilByHouseName(final String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null or empty");
         }
-        return houseMap.getOrDefault(name, new House("unknown", "unknown")).sigil();
+        return houses.getOrDefault(name, new House("unknown", "unknown")).sigil();
     }
 
     public Collection<House> getListOfHouse() {
-        return houseMap.values();
+        return houses.values();
     }
 
     private void printListOfHouse() {
