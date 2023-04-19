@@ -6,42 +6,38 @@ import java.util.Timer;
 
 public class Main {
 
+    private static HashMap<String, WeatherData> weatherDataHashMap = new HashMap<>();
+
     static void getWeatherInfo(String cityName){
-        if (WeatherData.weatherDataHashMap.get(cityName) != null) {
-            System.out.println(WeatherData.weatherDataHashMap.get(cityName));
+        if (weatherDataHashMap.get(cityName) != null) {
+            System.out.println(weatherDataHashMap.get(cityName));
         } else {
-            WeatherData.weatherDataHashMap.put(cityName, new SimpleService().getWeather(cityName));
+            weatherDataHashMap.put(cityName, new SimpleService().getWeather(cityName));
             System.out.println(new SimpleService().getWeather(cityName));
         }
     }
 
     static void changeInfoCash(WeatherData weatherData){
-        if (WeatherData.weatherDataHashMap.get(weatherData.getCity()) != null) {
-            WeatherData.weatherDataHashMap.put(weatherData.getCity(), weatherData);
-        } else {
-
-            System.out.println("Нет такого города в хэше!!!");
+        if (weatherDataHashMap.get(weatherData.getCity()) != null) {
+            weatherDataHashMap.put(weatherData.getCity(), weatherData);
         }
     }
 
     static void deleteInfoCash(String cityName){
-        if (WeatherData.weatherDataHashMap.get(cityName) != null) {
-            WeatherData.weatherDataHashMap.remove(cityName);
-        } else {
-            System.out.println("Нет такого города в хэше!!!");
+        if (weatherDataHashMap.get(cityName) != null) {
+            weatherDataHashMap.remove(cityName);
         }
     }
 
     static void cashInfo(){
-        WeatherData.weatherDataHashMap.entrySet().forEach(System.out::println);
+        weatherDataHashMap.entrySet().forEach(System.out::println);
     }
 
     public static void main(String[] args) {
-
-        WeatherData.weatherDataHashMap.put("Moscow", new WeatherData("Moscow",25,25));
-        WeatherData.weatherDataHashMap.put("Minsk", new WeatherData("Minsk",15,60));
-        WeatherData.weatherDataHashMap.put("Brest", new WeatherData("Brest",9,78));
-        WeatherData.weatherDataHashMap.put("Saint-Petersburg", new WeatherData("Saint-Petersburg",15,85));
+        weatherDataHashMap.put("Moscow", new WeatherData("Moscow",25,25));
+        weatherDataHashMap.put("Minsk", new WeatherData("Minsk",15,60));
+        weatherDataHashMap.put("Brest", new WeatherData("Brest",9,78));
+        weatherDataHashMap.put("Saint-Petersburg", new WeatherData("Saint-Petersburg",15,85));
 
         getWeatherInfo("Brest");
         getWeatherInfo("Pinsk");
@@ -51,7 +47,5 @@ public class Main {
         deleteInfoCash("Pinsk");
         deleteInfoCash("Novosibirsk");
         cashInfo();
-
-
     }
 }
