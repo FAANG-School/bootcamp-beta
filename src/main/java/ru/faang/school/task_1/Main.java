@@ -2,25 +2,18 @@ package ru.faang.school.task_1;
 
 public class Main {
     public static void main(String[] args) {
-        Creature pikeman = new Pikeman();
-        Creature pikeman1 = new Pikeman();
-        Hero hero = new Hero("Dimon", "Kraken", 3, 2);
+        Hero dmitryI = new Hero("Dimon", "Kraken", 3, 2);
+        Hero petrV = new Hero("Petr", "Russia Empire", 5, 1);
 
-        hero.addCreature(new Griffin(), 2);
-        hero.addCreature(new Pikeman(), 1);
-        hero.addCreature(new Swordman(), 3);
-        hero.addCreature(new Griffin(), 5);
-        hero.printInfoArmy();
+        dmitryI.addCreature(new Griffin(121), 1);
+        dmitryI.addCreature(new Swordman(21), 2);
+        dmitryI.addCreature(new Angel(5), 1);
 
-        System.out.println(hero.getArmy().keySet());
 
-//
-//        hero.removeCreature(new Griffin(), 2);
-//        System.out.println("==============");
-//        hero.printInfoArmy();
-//
-//        hero.removeCreature(new Pikeman(), 2);
-//        System.out.println("==============");
-//        hero.printInfoArmy();
+        petrV.addCreature(new Pikeman(99), 3);
+        petrV.addCreature(new Swordman(21), 5);
+
+        Battlefield bf = new Battlefield(dmitryI, petrV);
+        System.out.println("Winner: " + bf.battle().getName());
     }
 }

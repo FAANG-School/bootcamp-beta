@@ -10,11 +10,13 @@ public class Battlefield {
         this.heroTwo = heroTwo;
 
     }
-//    public Hero battle() {
-//        while (heroOne.getArmy().size() > 0 | heroTwo.getArmy().size() > 0)
-//        {
-//            Creature fighterOne = ;
-//            Creature fighterTwo;
-//        }
-//    }
+    public Hero battle() {
+        System.out.println("The battle begins...");
+        double diffFirstArmy = heroOne.getPowerOfArmy() - heroTwo.getDefenseOfArmy();
+        double diffSecondArmy = heroTwo.getPowerOfArmy() - heroOne.getDefenseOfArmy();
+
+        Hero winner = diffFirstArmy >= diffSecondArmy ? heroOne : heroTwo;
+        System.out.println("The battle finished!");
+        return winner;
+    }
 }

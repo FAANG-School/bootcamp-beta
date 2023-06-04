@@ -10,7 +10,11 @@ public class Hero {
     private String fraction;
     private int experience;
     private int level;
-    private Map<Creature, Integer> army = new HashMap<>();
+    private List<Creature> army = new ArrayList<>();
+
+    public String getName() {
+        return name;
+    }
 
     public Hero(String name, String fraction, int experience, int level) {
         this.name = name;
@@ -19,27 +23,33 @@ public class Hero {
         this.level = level;
     }
     public void addCreature(Creature creature, int quantity) {
-        if (army.containsKey(creature)) {
-            army.put(creature, army.get(creature) + quantity);
-        } else army.put(creature, quantity);
-    }
-    public void removeCreature(Creature creature, int quantity) {
-        if (!(army.containsKey(creature))) {
-            throw new IllegalArgumentException("Нет такого существа");
-        }
-
-        if (army.get(creature) > quantity) {
-            army.put(creature, army.get(creature) - quantity);
-        } else {
-            army.remove(creature);
+        for (int i = 0; i < quantity; i++) {
+            army.add(creature);
         }
     }
-    public Map<Creature, Integer> getArmy() {
+//    public void removeCreature(Creature creature, int quantity) {
+//
+//    }
+    public List<Creature> getArmy() {
         return army;
     }
+    public double getPowerOfArmy() {
+        double power = 0.0;
+        for (Creature creature: army) {
+            power += creature.getDamage() * creature.getCountCreature();
+        }
+        return power;
+    }
+    public double getDefenseOfArmy() {
+        double defense = 0.0;
+        for (Creature creature: army) {
+            defense += creature.getDefense() * creature.getCountCreature();
+        }
+        return defense;
+    }
     public void printInfoArmy() {
-        for (Map.Entry<Creature, Integer> entry: army.entrySet()) {
-            System.out.println(String.format("Героев под названием %s - %d штук", entry.getKey().getName(), entry.getValue()));
+        for (Creature creature: army) {
+            System.out.println(creature.getName() + " - количество: " + creature.getCountCreature());
         }
     }
 }
