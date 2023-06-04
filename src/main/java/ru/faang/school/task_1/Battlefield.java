@@ -8,6 +8,7 @@ public class Battlefield {
     public Battlefield(Hero heroOne, Hero heroTwo) {
         this.heroOne = heroOne;
         this.heroTwo = heroTwo;
+
     }
 //    public Hero battle() {
 //        while (heroOne.getArmy().size() > 0 | heroTwo.getArmy().size() > 0)
