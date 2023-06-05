@@ -1,3 +1,14 @@
+# Explamnation
+
+This is beta of bootcamp I helped developing.
+
+This repo contains tasks i solved.
+
+# Tools
+
+1. Java 17
+2. Gradle
+
 # bootcamp-beta
 
 1. Задачи расположены в пакете `src/main/java/ru/faang/school`
