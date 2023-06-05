@@ -22,14 +22,13 @@ public class Hero {
         this.experience = experience;
         this.level = level;
     }
+
     public void addCreature(Creature creature, int quantity) {
         for (int i = 0; i < quantity; i++) {
             army.add(creature);
         }
     }
-//    public void removeCreature(Creature creature, int quantity) {
-//
-//    }
+
     public List<Creature> getArmy() {
         return army;
     }
@@ -40,6 +39,7 @@ public class Hero {
         }
         return power;
     }
+
     public double getDefenseOfArmy() {
         double defense = 0.0;
         for (Creature creature: army) {
@@ -47,6 +47,7 @@ public class Hero {
         }
         return defense;
     }
+
     public void printInfoArmy() {
         for (Creature creature: army) {
             System.out.println(creature.getName() + " - количество: " + creature.getCountCreature());

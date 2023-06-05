@@ -11,11 +11,6 @@ public abstract class Creature {
     private double speed;
     private int countCreature;
 
-    //@Override
-    //public String toString() {
-    //    return name;
-    //}
-
     public Creature(String name, int level, int attack, int defense, double speed, int quantity) {
         this.name = name;
         this.level = level;
@@ -24,6 +19,7 @@ public abstract class Creature {
         this.speed = speed;
         countCreature += quantity;
     }
+
     public int getCountCreature() {
         return countCreature;
     }
@@ -31,9 +27,11 @@ public abstract class Creature {
     public double getDamage() {
         return level + (1.0 * attack) * (0.2 * defense) * (0.2 * speed) * (Math.random() * 3 + 1);
     }
+
     public double getDefense() {
         return level + (0.3 * attack) * (1.0 * defense) * (0.2 * speed) * (Math.random() * 10 + 1);
     }
+
     public String getName() {
         return name;
     }
