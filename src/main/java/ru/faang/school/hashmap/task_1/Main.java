@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static Map<String, House> westerosHouse = new HashMap<>();
+    private final static Map<String, House> westerosHouse = new HashMap<>();
 
     public static void allHouses() {
-        for (Map.Entry<String, House> house: westerosHouse.entrySet()) {
+        for (Map.Entry<String, House> house : westerosHouse.entrySet()) {
             System.out.println("Название дома: " + house.getKey() + " - герб " + house.getValue().getName());
         }
     }
@@ -17,8 +17,7 @@ public class Main {
     public static void addHouse(House house) {
         if (westerosHouse.containsKey(house.getName())) {
             System.out.println(String.format("Дом под названием %s уже есть в списке", house.getName()));
-        }
-        else {
+        } else {
             westerosHouse.put(house.getName(), house);
             System.out.println(house.getName() + " был добавлен в список!");
         }
@@ -28,8 +27,7 @@ public class Main {
         if (westerosHouse.containsKey(houseName)) {
             westerosHouse.remove(houseName);
             System.out.println(houseName + " был удален из списка!");
-        }
-        else {
+        } else {
             System.out.println(String.format("Дома под названием %s нет в списке - удалять нечего", houseName));
         }
     }
@@ -37,8 +35,7 @@ public class Main {
     public static void getHouse(String houseName) {
         if (!(westerosHouse.containsKey(houseName))) {
             System.out.println("Дом не был найден");
-        }
-        else {
+        } else {
             System.out.println(String.format("Дом %s был найден - герб %s", houseName, westerosHouse.get(houseName).getName()));
         }
     }
