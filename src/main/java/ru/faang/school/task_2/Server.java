@@ -3,11 +3,11 @@ package ru.faang.school.task_2;
 public class Server {
     private final double COEF = 0.5;
 
-    private double load; // текущая загрузка 35.00%
+    private double load;
 
-    private double maxLoad; // максимальная загрузка 100.00%, 70.55%, 85.00;
+    private double maxLoad;
 
-    private double energyConsumption; // энергопотребление 70.00 ВТ
+    private double energyConsumption;
 
     public Server(double load, double maxLoad) {
         this.load = load;
