@@ -1,9 +1,6 @@
 package ru.faang.school.task_1;
 
 import ru.faang.school.task_1.classes.creatures.Angel;
-import ru.faang.school.task_1.classes.creatures.Griffin;
-import ru.faang.school.task_1.classes.creatures.Pikeman;
-import ru.faang.school.task_1.classes.creatures.Swordman;
 import ru.faang.school.task_1.classes.hero.Hero;
 import ru.faang.school.task_1.classes.util.Battlefield;
 import ru.faang.school.task_1.classes.util.Fraction;

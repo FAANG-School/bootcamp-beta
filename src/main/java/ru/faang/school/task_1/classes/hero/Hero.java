@@ -1,8 +1,6 @@
 package ru.faang.school.task_1.classes.hero;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import ru.faang.school.task_1.classes.creatures.Creature;
 import ru.faang.school.task_1.classes.util.Fraction;
 
@@ -13,9 +11,9 @@ import java.util.List;
 public class Hero {
     private final String NAME;
     private final Fraction FRACTION;
-     private int experience;
+    private int experience;
     private int level;
-    private List<Creature> army = new ArrayList<>();
+    private final List<Creature> army = new ArrayList<>();
 
     public void addCreature(Creature creature, int quantity) {
         if (!army.contains(creature)) {

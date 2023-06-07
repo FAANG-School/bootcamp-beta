@@ -1,17 +1,13 @@
 package ru.faang.school.task_1.classes.util;
 
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import ru.faang.school.task_1.classes.creatures.Creature;
 import ru.faang.school.task_1.classes.hero.Hero;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Battlefield {
-    private Hero blueHero;
-    private Hero redHero;
+    private final Hero blueHero;
+    private final Hero redHero;
     List<Creature> firstArmy;
     List<Creature> secondArmy;
 
@@ -49,9 +45,7 @@ public class Battlefield {
     }
 
     private Creature getCreature(List<Creature> army) {
-        int id = (int) Math.round(0 + Math.random() * (army.size() - 1));
-        Creature creature = army.get(id);
-        return creature;
+        return army.get((int) Math.round(0 + Math.random() * (army.size() - 1)));
     }
 
     private void fight(Creature firstCreature, Creature secondCreature) {

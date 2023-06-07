@@ -1,9 +1,6 @@
 package ru.faang.school.task_1.classes.creatures;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
