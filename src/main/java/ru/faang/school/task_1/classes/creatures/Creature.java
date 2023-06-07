@@ -1,5 +1,12 @@
 package ru.faang.school.task_1.classes.creatures;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public abstract class Creature {
     private String name;
     private int level;
@@ -7,8 +14,4 @@ public abstract class Creature {
     private int armor;
     private int speed;
     private int quantity;
-
-    public int getDamage() {
-        return damage;
-    }
 }

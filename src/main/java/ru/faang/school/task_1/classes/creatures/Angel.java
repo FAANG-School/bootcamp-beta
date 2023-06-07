@@ -1,10 +1,16 @@
 package ru.faang.school.task_1.classes.creatures;
 
+import lombok.Getter;
+
+@Getter
 public class Angel extends Creature{
-    private String name = "Архангел";
-    private int level = 7;
-    private int damage = 50;
-    private int armor = 30;
-    private int speed = 18;
-    private int quantity;
+    private static final String NAME = "Архангел";
+    private static final int LEVEL = 7;
+    private static final int DAMAGE = 30;
+    private static final int ARMOR = 30;
+    private static final int SPEED = 30;
+
+    public Angel(int quantity) {
+        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED, quantity);
+    }
 }

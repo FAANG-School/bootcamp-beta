@@ -1,10 +1,16 @@
 package ru.faang.school.task_1.classes.creatures;
 
+import lombok.Getter;
+
+@Getter
 public class Pikeman extends Creature {
-    private String name = "Копейщик";
-    private int level = 1;
-    private int damage = 4;
-    private int armor = 5;
-    private int speed = 4;
-    private static int quantity;
+    private static final String NAME = "Копейщик";
+    private static final int LEVEL = 1;
+    private static final int DAMAGE = 3;
+    private static final int ARMOR = 5;
+    private static final int SPEED = 4;
+
+    public Pikeman(int quantity) {
+        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED, quantity);
+    }
 }
