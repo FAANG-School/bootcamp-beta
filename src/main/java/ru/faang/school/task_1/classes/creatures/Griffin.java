@@ -10,7 +10,7 @@ public class Griffin extends Creature {
     private static final int ARMOR = 7;
     private static final int SPEED = 6;
 
-    public Griffin(int quantity) {
-        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED, quantity);
+    public Griffin() {
+        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED);
     }
 }

@@ -1,21 +1,60 @@
 package ru.faang.school.task_1.classes.hero;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import ru.faang.school.task_1.classes.creatures.Creature;
 import ru.faang.school.task_1.classes.util.Fraction;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-@RequiredArgsConstructor
 public class Hero {
-    @NonNull
-    private String name;
-    @NonNull
-    private Fraction fraction;
-    @NonNull
-    private int experience;
-    @NonNull
+    private final String NAME;
+    private final Fraction FRACTION;
+     private int experience;
     private int level;
-    private Map<> creatures = new HashMap();
+    private List<Creature> army = new ArrayList<>();
 
+    public void addCreature(Creature creature, int quantity) {
+        if (!army.contains(creature)) {
+            creature.setQuantity(quantity);
+            army.add(creature);
+        } else {
+            for (Creature curCreature : army) {
+                if (curCreature.equals(creature)) {
+                    curCreature.setQuantity(quantity);
+                }
+            }
+        }
+    }
 
+    public void removeCreature(Creature creature, int quantity) {
+        for (Creature curCreature : army) {
+            if (curCreature.equals(creature)) {
+                int curQuantity = curCreature.getQuantity() - quantity;
+                if (curQuantity < 0) {
+                    System.out.println("Количество удаляемых существ превышает существующих");
+                } else {
+                    curCreature.setQuantity(-quantity);
+                }
+            }
+        }
+    }
+
+    public void getArmyToString() {
+        for (Creature creature : army) {
+            System.out.println(creature);
+        }
+    }
+
+    public List<Creature> getArmy() {
+        return army;
+    }
+
+    public Hero(String NAME, Fraction FRACTION, int experience, int level) {
+        this.NAME = NAME;
+        this.FRACTION = FRACTION;
+        this.experience = experience;
+        this.level = level;
+    }
 }

@@ -10,7 +10,7 @@ public class Swordman extends Creature {
     private static final int ARMOR = 12;
     private static final int SPEED = 5;
 
-    public Swordman(int quantity) {
-        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED, quantity);
+    public Swordman() {
+        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED);
     }
 }

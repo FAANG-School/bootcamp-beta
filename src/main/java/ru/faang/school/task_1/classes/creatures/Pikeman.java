@@ -10,7 +10,7 @@ public class Pikeman extends Creature {
     private static final int ARMOR = 5;
     private static final int SPEED = 4;
 
-    public Pikeman(int quantity) {
-        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED, quantity);
+    public Pikeman() {
+        super(NAME, LEVEL, DAMAGE, ARMOR, SPEED);
     }
 }
