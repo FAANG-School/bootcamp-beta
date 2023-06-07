@@ -42,6 +42,9 @@ public class DataCenterService {
 
     public void releaseResources(ResourceRequest request) {
         System.out.println("Запрос на высвобождение ресурса: " + request.getLoad());
+        if (request.getLoad() > dataCenter.getMaxLoad()) {
+            throw new IllegalArgumentException("Попытка освободить мощности больше чем есть на сервере.");
+        }
         System.out.println("\tСервер с мин наргузкой: " + getServerWithMinLoad().getLoad());
         while (request.getLoad() > 0) {
             Server server = getServerWithMinLoad();

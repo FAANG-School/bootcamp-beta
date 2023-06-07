@@ -38,7 +38,7 @@ public class DataCenter {
         servers.add(server);
     }
 
-    private double calcMaxLoad() {
+    public double getMaxLoad() {
         double result = 0.0;
         for (Server server : servers) {
             result += server.getMaxLoad();
@@ -61,7 +61,7 @@ public class DataCenter {
     @Override
     public String toString() {
         return "Состояние центра:" +
-                "\n\tОбщая макс нагрузка: " + calcMaxLoad()+
+                "\n\tОбщая макс нагрузка: " + getMaxLoad()+
                 "\n\tCвободно ресурсов:" + freeResources() +
                 "\n\tЗанято ресурсов:" + loadOfAllServers() +
                 "\n\t кол-во серверов: " + servers.size() + "\n";
