@@ -1,5 +1,6 @@
 package ru.faang.school.task_1.classes.hero;
 
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import ru.faang.school.task_1.classes.creatures.Creature;
@@ -8,6 +9,7 @@ import ru.faang.school.task_1.classes.util.Fraction;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Hero {
     private final String NAME;
     private final Fraction FRACTION;

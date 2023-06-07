@@ -7,12 +7,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@Setter
 public abstract class Creature {
     private String name;
     private int level;
     private int damage;
     private int armor;
     private int speed;
+    private int health;
     private int quantity;
 
     @Override
@@ -38,7 +40,7 @@ public abstract class Creature {
         }
     }
 
-    public Creature(String name, int level, int damage, int armor, int speed) {
+    public Creature(String name, int level, int damage, int armor, int speed, int health) {
         if (level < 1 || damage < 0 || armor < 0 || speed < 0) {
             try {
                 throw new IllegalArgumentException();
@@ -51,6 +53,7 @@ public abstract class Creature {
         this.damage = damage;
         this.armor = armor;
         this.speed = speed;
+        this.health = health;
         this.quantity = 0;
     }
 
@@ -62,6 +65,7 @@ public abstract class Creature {
                 ", damage=" + damage +
                 ", armor=" + armor +
                 ", speed=" + speed +
+                ", health=" + health +
                 ", quantity=" + quantity +
                 '}';
     }
