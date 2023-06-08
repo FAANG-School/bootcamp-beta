@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.addStudent("Виталий Борзников", "Ученый по C#", 3);
+        main.addStudent("Виталий Борзников", "С# ученый", 3);
         main.addStudent("Владимир Хиль", "Java программист", 1);
         main.addStudent("Евгений Иващенко", "Java программист", 1);
         main.addStudent("Азат Малиев", "Java программист", 1);
@@ -22,6 +22,7 @@ public class Main {
         main.studentSearch("Иностранные языки", 1);
         main.removeStudent("Ремми Магдалиев", "Иностранные языки", 1);
         main.studentSearch("Иностранные языки", 1);
+        main.studentSearch("Java программист", 2);
     }
 
     public Map<Pair, List<Student>> groupInfo(List<Student> studends) {
@@ -60,7 +61,7 @@ public class Main {
             }
         }
         if (count == 0) {
-            System.out.println("Данной группы на этом курсе не существует");
+            System.out.println("Такой группы на этом курсе не существует");
         }
     }
 }
