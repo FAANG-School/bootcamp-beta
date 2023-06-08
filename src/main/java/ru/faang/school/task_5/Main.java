@@ -18,18 +18,18 @@ public class Main {
         main.addStudent("Наташа Безымянная", "Учитель танцев", 2);
         main.addStudent("Инна Копникова", "Учитель танцев", 3);
         main.addStudent("Ремми Магдалиев", "Иностранные языки", 1);
-        System.out.println(main.groupInfo(studends));
-        main.studentSearch("Иностранные языки", 1);
+        System.out.println(main.getGroupsInfo(studends));
+        main.studentsSearch("Иностранные языки", 1);
         main.removeStudent("Ремми Магдалиев", "Иностранные языки", 1);
-        main.studentSearch("Иностранные языки", 1);
-        main.studentSearch("Java программист", 2);
+        main.studentsSearch("Иностранные языки", 1);
+        main.studentsSearch("Java программист", 1);
     }
 
-    public Map<Pair, List<Student>> groupInfo(List<Student> studends) {
+    public Map<Pair, List<Student>> getGroupsInfo(List<Student> studends) {
         Map<Pair, List<Student>> groups = new HashMap<>();
         for (Student student : studends) {
             Pair pair = new Pair(student.getFaculty(), student.getYear());
-            groups.put(pair, studentSearchList(pair.getFaculty(), pair.getYear()));
+            groups.put(pair, getStudentsList(pair.getFaculty(), pair.getYear()));
         }
         return groups;
     }
@@ -42,7 +42,7 @@ public class Main {
         studends.remove(new Student(name, faculty, year));
     }
 
-    public List<Student> studentSearchList(String faculty, int year) {
+    public List<Student> getStudentsList(String faculty, int year) {
         List<Student> list = new ArrayList<>();
         for (Student student : studends) {
             if (student.getFaculty().equals(faculty) && student.getYear() == year) {
@@ -52,7 +52,7 @@ public class Main {
         return list;
     }
 
-    public void studentSearch(String faculty, int year) {
+    public void studentsSearch(String faculty, int year) {
         int count = 0;
         for (Student student : studends) {
             if (student.getFaculty().equalsIgnoreCase(faculty) && student.getYear() == year) {
