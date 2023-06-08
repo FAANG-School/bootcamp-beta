@@ -9,7 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class House {
 
-    String name;
+    String motto;
     String sigil;
 
-   }
+    @Override
+    public String toString() {
+        return "motto - '" + motto + "', sigil - '" + sigil + "'.";
+    }
+
+}
