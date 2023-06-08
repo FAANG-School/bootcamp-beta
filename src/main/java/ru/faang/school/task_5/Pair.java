@@ -40,6 +40,6 @@ public class Pair {
 
     @Override
     public String toString() {
-        return "Группа: " + faculty + ",курc " + year;
+        return "Группа: " + faculty + ",Курс: " + year;
     }
 }

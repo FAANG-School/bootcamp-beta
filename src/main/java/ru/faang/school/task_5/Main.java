@@ -10,18 +10,18 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.addStudent("Vitaliy", "Scientist", 3);
-        main.addStudent("Vladimir", "Programmer", 1);
-        main.addStudent("Yevhenii", "Programmer", 1);
-        main.addStudent("Azat", "Programmer", 1);
-        main.addStudent("Vlad", "Dancer", 2);
-        main.addStudent("Natasha", "Dancer", 2);
-        main.addStudent("Inna", "Dancer", 3);
-        main.addStudent("Remmi", "Halloween", 1);
+        main.addStudent("Виталий Борзников", "Ученый по C#", 3);
+        main.addStudent("Владимир Хиль", "Java программист", 1);
+        main.addStudent("Евгений Иващенко", "Java программист", 1);
+        main.addStudent("Азат Малиев", "Java программист", 1);
+        main.addStudent("Влад Коровко", "Учитель танцев", 2);
+        main.addStudent("Наташа Безымянная", "Учитель танцев", 2);
+        main.addStudent("Инна Копникова", "Учитель танцев", 3);
+        main.addStudent("Ремми Магдалиев", "Иностранные языки", 1);
         System.out.println(main.groupInfo(studends));
-        main.studentSearch("Halloween", 1);
-        main.removeStudent("Remmi", "Halloween", 1);
-        main.studentSearch("Halloween", 1);
+        main.studentSearch("Иностранные языки", 1);
+        main.removeStudent("Ремми Магдалиев", "Иностранные языки", 1);
+        main.studentSearch("Иностранные языки", 1);
     }
 
     public Map<Pair, List<Student>> groupInfo(List<Student> studends) {
@@ -60,7 +60,7 @@ public class Main {
             }
         }
         if (count == 0) {
-            System.out.println("На таком курсе данной группы не существует.");
+            System.out.println("Данной группы на этом курсе не существует");
         }
     }
 }
