@@ -11,6 +11,9 @@ public class WeatherData {
         this.humidity = humidity;
     }
 
+    public WeatherData() {
+    }
+
     public String getCity() {
         return city;
     }
@@ -21,6 +24,14 @@ public class WeatherData {
 
     public double getHumidity() {
         return humidity;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setHumidity(double humidity) {
+        this.humidity = humidity;
     }
 
     @Override
