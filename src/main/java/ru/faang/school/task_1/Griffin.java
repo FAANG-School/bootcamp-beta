@@ -1,7 +1,13 @@
 package ru.faang.school.task_1;
 
-public class Griffin extends Creature{
+public class Griffin extends Creature {
+    private static final String NAME = "Griffin";
+    private static final int LEVEL = 3;
+    private static final int ATTACK = 8;
+    private static final int PROTECTION = 8;
+    private static final int SPEED = 6;
+    private static final int HEALTH = 30;
     public Griffin() {
-        super("Griffin", 3, 8, 8, 6, 30);
+        super(NAME,LEVEL,ATTACK,PROTECTION,SPEED,HEALTH);
     }
 }
