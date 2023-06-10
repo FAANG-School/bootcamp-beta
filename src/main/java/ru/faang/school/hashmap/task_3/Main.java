@@ -13,15 +13,14 @@ public class Main {
 
         for (Student student : studentsList) {
             Pair pair = new Pair(student.getFaculty(), student.getYear());
-//            if (groupedMap.containsKey(pair)) {
-//                groupedMap.get(pair).add(student); // just adding the student to list if we have such pair
-//            } else {
-//                List<Student> studentList = new ArrayList<>();
-//                studentList.add(student);
-//                groupedMap.put(pair, studentList);
-//                // groupedMap.put(pair, new ArrayList<>().add(student)); - do not understood why it`s not working
-//            }
-            groupedMap.computeIfAbsent(pair, k -> new ArrayList<>()).add(student);
+            if (groupedMap.containsKey(pair)) {
+                groupedMap.get(pair).add(student); // just adding the student to list if we have such pair
+            } else {
+                List<Student> studentList = new ArrayList<>();
+                studentList.add(student);
+                groupedMap.put(pair, studentList);
+                // groupedMap.put(pair, new ArrayList<>().add(student)); - do not understood why it`s not working
+            }
         }
         return groupedMap;
     }
