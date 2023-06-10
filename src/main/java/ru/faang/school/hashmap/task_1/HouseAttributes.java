@@ -7,14 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class House {
+public class HouseAttributes {
 
     String motto;
     String sigil;
 
     @Override
     public String toString() {
-        return "motto - '" + motto + "', sigil - '" + sigil + "'.";
+        return "motto - '" + motto + "', sigil - '" + sigil + "'";
     }
 
 }
