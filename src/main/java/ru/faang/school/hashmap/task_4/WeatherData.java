@@ -3,9 +3,9 @@ package ru.faang.school.hashmap.task_4;
 import java.util.Objects;
 
 public class WeatherData {
-    private String city;
-    private int temperature;
-    private int humidity;
+    private final String city;
+    private final int temperature;
+    private final int humidity;
 
     public WeatherData(String city, int temperature, int humidity) {
         this.city = city;
@@ -15,9 +15,11 @@ public class WeatherData {
 
     @Override
     public String toString() {
-        return "В городе " + city +
-                " температура " + temperature +
-                " влажность " + humidity;
+        return "WeatherData{" +
+                "city='" + city + '\'' +
+                ", temperature=" + temperature +
+                ", humidity=" + humidity +
+                '}';
     }
 
     public String getCity() {
