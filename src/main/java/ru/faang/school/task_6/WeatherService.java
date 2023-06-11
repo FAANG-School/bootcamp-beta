@@ -1,7 +1,7 @@
 package ru.faang.school.task_6;
 
-public class SomeClass {
-    public static WeatherData doSomething(String city) {
+public class WeatherService {
+    public static WeatherData getServicesInfoBy(String city) {
         System.out.printf("Asking for weather in %s....%n", city);
         try {
             Thread.sleep(1000);
@@ -10,7 +10,12 @@ public class SomeClass {
         }
         int temperature = (int) (Math.random() * 73) - 36;
         double humidity = (Math.random() * 21) + 20;
-        double roundedHumidity = Main.roundValue(humidity);
+        double roundedHumidity = roundValue(humidity);
         return new WeatherData(city, temperature, roundedHumidity);
+    }
+
+    public static double roundValue(double value) {
+        String newValue = String.valueOf(value).substring(0, 5);
+        return Double.parseDouble(newValue);
     }
 }

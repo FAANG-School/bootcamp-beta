@@ -1,17 +1,14 @@
 package ru.faang.school.task_6;
 
 public class WeatherData {
-    String city;
-    int temperature;
-    double humidity;
+    private String city;
+    private int temperature;
+    private double humidity;
 
     public WeatherData(String city, int temperature, double humidity) {
         this.city = city;
         this.temperature = temperature;
         this.humidity = humidity;
-    }
-
-    public WeatherData() {
     }
 
     public String getCity() {

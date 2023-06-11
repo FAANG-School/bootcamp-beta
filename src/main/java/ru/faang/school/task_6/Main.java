@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Main {
 
-    private final static Map<String, WeatherData> CITY_WEATHER = new HashMap<>();
+    private static final Map<String, WeatherData> CITY_WEATHER = new HashMap<>();
 
     public static void main(String[] args) {
         CITY_WEATHER.put("Moscow", new WeatherData("Moscow", 25, 30.00));
@@ -17,6 +17,7 @@ public class Main {
         System.out.println(main.getWeather("Kopenhagen"));
         System.out.println(main.getWeather("Belgorod"));
         main.setWeather("Kopenhagen");
+        main.setWeather("Balli");
         System.out.println(main.getWeather("Kopenhagen"));
         main.deleteWeatherInfo("Kopenhagen");
         main.showAllCitiesWeathers();
@@ -28,16 +29,20 @@ public class Main {
             WeatherData weatherData = CITY_WEATHER.get(city);
             return weatherData.toString();
         }
-        WeatherData weatherData = SomeClass.doSomething(city);
+        WeatherData weatherData = WeatherService.getServicesInfoBy(city);
         CITY_WEATHER.put(city, weatherData);
         return weatherData.toString();
     }
 
     public void setWeather(String city) {
+        if (!CITY_WEATHER.containsKey(city)) {
+            System.out.printf("Города с таким именем как %s не существует в базе данных.%n", city);
+            return;
+        }
         WeatherData weatherData = CITY_WEATHER.get(city);
         int temperature = (int) (Math.random() * 73) - 36;
         double humidity = (Math.random() * 21) + 20;
-        double roundedHumidity = roundValue(humidity);
+        double roundedHumidity = WeatherService.roundValue(humidity);
         weatherData.setTemperature(temperature);
         weatherData.setHumidity(roundedHumidity);
     }
@@ -48,12 +53,7 @@ public class Main {
 
     public void showAllCitiesWeathers() {
         for (Map.Entry<String, WeatherData> entry : CITY_WEATHER.entrySet()) {
-            System.out.println(entry);
+            System.out.println(entry.getValue());
         }
-    }
-
-    public static double roundValue(double value) {
-        String newValue = String.valueOf(value).substring(0, 5);
-        return Double.parseDouble(newValue);
     }
 }
