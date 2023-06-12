@@ -36,6 +36,7 @@ public class Main {
     }
     private static void displaySigilByHouseName(Map<String, House> HOUSE_MAP, String name) {
         House house = HOUSE_MAP.get(name);
+
         if (house != null) {
             System.out.println("Sigil of " + name + ": " + house.getSigil());
         } else {
