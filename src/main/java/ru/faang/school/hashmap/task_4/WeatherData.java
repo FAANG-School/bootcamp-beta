@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class WeatherData {
 
-    String city;
-    int temperature;
-    int humidity;
+    private String city;
+    private int temperature;
+    private int humidity;
 
     @Override
     public String toString() {
