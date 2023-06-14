@@ -27,7 +27,7 @@ public class HouseBook {
 
     public String getHouseSigil(String houseName){
         if (houses.containsKey(houseName)){
-            return houses.get(houseName).sigil;
+            return houses.get(houseName).getSigil();
         }
         throw new HouseBookException(String.format(Message.HOUSE_DOESNT_EXIST, houseName));
     }

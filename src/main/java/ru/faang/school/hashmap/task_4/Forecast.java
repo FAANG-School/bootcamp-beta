@@ -9,11 +9,10 @@ public class Forecast {
     public String getWeatherReport(String city){
         if (weatherReport.containsKey(city)){
             return weatherReport.get(city).toString();
-        } else {
-            WeatherData newData = generateWhetherData(city);
-            weatherReport.put(city, newData);
-            return newData.toString();
         }
+        WeatherData newData = generateWhetherData(city);
+        weatherReport.put(city, newData);
+        return newData.toString();
     }
 
     public String updateWeatherReport(String city){
@@ -31,12 +30,12 @@ public class Forecast {
     }
 
     public String deleteForecast(String city){
-        if (weatherReport.containsKey(city)){
-            weatherReport.remove(city);
-            return String.format(Message.CITY_DELETED, city);
-        } else {
+        if (!weatherReport.containsKey(city)){
             throw new ForecastException(String.format(Message.NO_SUCH_CITY, city));
         }
+        weatherReport.remove(city);
+
+        return String.format(Message.CITY_DELETED, city);
     }
 
     private WeatherData generateWhetherData(String city){

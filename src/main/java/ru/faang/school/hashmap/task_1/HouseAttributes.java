@@ -9,8 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HouseAttributes {
 
-    String motto;
-    String sigil;
+    private String motto;
+    private String sigil;
 
     @Override
     public String toString() {
